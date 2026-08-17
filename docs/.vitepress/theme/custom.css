@@ -1,0 +1,423 @@
+/* Hero 标题渐变效果 */
+.VPHomeHero .name,
+.VPHomeHero .name span,
+.home .hero .name {
+  background: linear-gradient(120deg, #41d1ff 30%, #bd34fe 70%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  display: inline-block;
+}
+/* Global styles for VitePress pages */
+.common_img {
+  display: block;
+  margin: 0 auto 24px;
+}
+
+/* Make left sidebar wider and allow link text to wrap */
+:root {
+  --vp-sidebar-width: 320px;
+  --vp-image-placeholder-bg: #edf3fb;
+  --vp-image-placeholder-highlight: rgba(255, 255, 255, 0.85);
+  --vp-image-placeholder-shadow: rgba(80, 115, 180, 0.12);
+  --vp-image-placeholder-error: rgba(239, 68, 68, 0.12);
+}
+
+.VPSidebar {
+  width: var(--vp-sidebar-width);
+}
+
+.VPNavBarTitle .title {
+  padding-left: 32px;
+}
+
+.VPNavBarTitle .logo {
+  height: 56px;
+  width: auto;
+  margin-right: 0;
+  transform: translateX(-32px);
+}
+
+.VPSidebar .group .item .link,
+.VPSidebar .group .item .link .text,
+.VPSidebar .outline-link {
+  white-space: normal;
+  word-break: break-word;
+  overflow: visible;
+  line-height: 1.5;
+}
+
+.VPSidebarItem.is-preview-locked > .item > .link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.VPSidebarItem.is-preview-locked > .item > .link::before {
+  content: "";
+  width: 13px;
+  height: 13px;
+  flex: 0 0 13px;
+  background: url("./icon-lock.svg") center / contain no-repeat;
+}
+
+.VPSidebarItem.is-preview-locked > .item > .link .text {
+  min-width: 0;
+}
+
+.pager-link.is-preview-locked .title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pager-link.is-preview-locked .title::before {
+  content: "";
+  width: 13px;
+  height: 13px;
+  flex: 0 0 13px;
+  background: url("./icon-lock.svg") center / contain no-repeat;
+}
+
+/* Enhanced NOTE block style with icon */
+.vp-doc .custom-block.note {
+  border: 1px solid #d4e2ff;
+  border-left: 6px solid #4a6bff;
+  background: #eef4ff; /* light blue background */
+  border-radius: 12px;
+  padding: 16px 18px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.vp-doc .custom-block.note .custom-block-title {
+  color: #2d3a67;
+  font-weight: 700;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.vp-doc .custom-block.note .custom-block-title::before {
+  content: "";
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  background: center/contain no-repeat
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%234a6bff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='12' cy='12' r='10'/><line x1='12' y1='16' x2='12' y2='12'/><path d='M12 8h.01'/></svg>");
+}
+
+.vp-doc .custom-block.note p,
+.vp-doc .custom-block.note ul {
+  margin: 0;
+  color: #2d3a67;
+  line-height: 1.65;
+}
+
+.vp-doc .custom-block.note ul {
+  padding-left: 20px;
+}
+.vp-doc img.inline-icon {
+  display: inline-block;
+  margin: 0 4px;
+  vertical-align: middle;
+}
+
+/* Tables: full width, prevent overflow, unified layout */
+.vp-doc table {
+  width: 100% !important;
+  max-width: 100% !important;
+  display: table;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+
+.vp-doc .table-wrapper {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.vp-doc img.vp-lazy-image {
+  background: linear-gradient(
+    110deg,
+    var(--vp-image-placeholder-bg) 8%,
+    var(--vp-image-placeholder-highlight) 18%,
+    var(--vp-image-placeholder-bg) 33%
+  );
+  background-size: 220% 100%;
+  border-radius: 14px;
+  box-shadow: inset 0 0 0 1px var(--vp-image-placeholder-shadow);
+  opacity: 0.45;
+  filter: none;
+  transition:
+    opacity 0.28s ease,
+    transform 0.28s ease,
+    box-shadow 0.28s ease,
+    background 0.28s ease;
+}
+
+.vp-doc img.vp-lazy-image.is-pending {
+  min-height: clamp(72px, 14vw, 180px);
+}
+
+.vp-doc table img.vp-lazy-image.is-pending,
+.vp-doc img.vp-lazy-image.is-table-image.is-pending {
+  min-height: 48px;
+  border-radius: 10px;
+}
+
+/* 表格内图片尺寸被压缩时，14px 圆角会让窄长图渲染成椭圆条；
+   加载后改用小圆角，保证产品图完整显示 */
+.vp-doc img.vp-lazy-image.is-table-image.is-loaded {
+  border-radius: 4px;
+}
+
+.vp-doc img.vp-lazy-image.is-loaded {
+  background: transparent;
+  box-shadow: none;
+  opacity: 1;
+  filter: none;
+  animation: none;
+  min-height: 0;
+}
+
+/* 正文独占大图保留懒加载，但不套模板默认圆角。 */
+.vp-doc img.common_img.vp-lazy-image,
+.vp-doc img.common_img.vp-lazy-image.is-pending,
+.vp-doc img.common_img.vp-lazy-image.is-loaded,
+.vp-doc img.common_img.vp-lazy-image.is-error {
+  border-radius: 0;
+}
+
+.vp-doc img.vp-lazy-image.is-error {
+  background:
+    repeating-linear-gradient(
+      -45deg,
+      var(--vp-image-placeholder-error),
+      var(--vp-image-placeholder-error) 12px,
+      rgba(255, 255, 255, 0.9) 12px,
+      rgba(255, 255, 255, 0.9) 24px
+    );
+  box-shadow: inset 0 0 0 1px rgba(239, 68, 68, 0.35);
+  opacity: 1;
+  filter: none;
+  animation: none;
+  min-height: clamp(72px, 14vw, 180px);
+}
+
+.vp-doc img.vp-lazy-image.is-priority-image.is-pending {
+  opacity: 0.62;
+  animation: vp-image-shimmer 1.4s linear infinite;
+}
+
+.vp-doc img.vp-lightbox-trigger.is-loaded {
+  cursor: zoom-in;
+}
+
+.vp-doc img.vp-lightbox-trigger:focus-visible {
+  outline: 3px solid var(--vp-c-brand-1);
+  outline-offset: 4px;
+}
+
+@keyframes vp-image-shimmer {
+  0% {
+    background-position: 100% 0;
+  }
+
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+@supports (content-visibility: auto) {
+  .vp-doc > p,
+  .vp-doc > ul,
+  .vp-doc > ol,
+  .vp-doc > table,
+  .vp-doc > .custom-block,
+  .vp-doc > img.vp-lazy-image,
+  .vp-doc .table-wrapper,
+  .vp-doc div[class*="language-"] {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 320px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vp-doc img.vp-lazy-image {
+    animation: none;
+    transition: none;
+    filter: none;
+  }
+}
+
+/* 忽略 th/td 上的内联宽度，自动分配列宽 */
+.vp-doc table th[style*="width"],
+.vp-doc table td[style*="width"] {
+  width: auto !important;
+}
+
+/* 基本单元格排版与换行 */
+.vp-doc table th,
+.vp-doc table td {
+  padding: 8px 10px;
+  word-break: break-word;
+  white-space: normal;
+}
+
+.vp-doc table th:first-child,
+.vp-doc table td:first-child {
+  width: auto;
+  text-align: center;
+}
+
+.vp-doc table img {
+  display: block;
+  margin: 0 auto;
+}
+
+.vp-doc table .common_img {
+  margin: 0 auto;
+}
+
+/* 调整首页内置分隔线（Feature 下方那条）宽度，让它更接近内容区整体宽度 */
+.VPHome .main::before {
+  width: 100%;
+}
+
+/* 隐藏导航栏中设置了 target="_self" 的外部链接箭头图标 */
+.VPNavBarMenuLink[target="_self"]::after,
+.VPNavBarMenu a[target="_self"]::after,
+.VPNavBarMenuLink[target="_self"] .icon,
+.VPNavBarMenuLink[target="_self"] .external-link-icon,
+.VPNavBarMenu a[target="_self"] .icon {
+  display: none !important;
+  content: none !important;
+  visibility: hidden !important;
+}
+
+.vp-doc .doc-variant-switcher {
+  --doc-switcher-accent: #f49f4d;
+  --doc-switcher-accent-border: #df8430;
+  --doc-switcher-accent-text: #2f1703;
+  --doc-switcher-accent-soft: rgba(244, 159, 77, 0.12);
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 12px;
+  margin: 22px 0 26px;
+  padding: 14px 16px 16px;
+  border: 1px solid var(--vp-c-border);
+  border-radius: 8px;
+  background: var(--vp-c-bg-soft);
+  background: color-mix(in srgb, var(--doc-switcher-accent) 7%, var(--vp-c-bg) 93%);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.vp-doc .doc-variant-switcher__row {
+  display: flex;
+  flex: 1 1 100%;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 10px 0;
+}
+
+.vp-doc .doc-variant-switcher__label {
+  flex-basis: 100%;
+  align-self: flex-start;
+  color: var(--vp-c-text-1);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 22px;
+}
+
+.vp-doc .doc-variant-switcher__button {
+  display: flex;
+  min-width: 0;
+  min-height: 50px;
+  flex: 1 1 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  padding: 9px 12px;
+  border: 1px solid var(--vp-c-border);
+  border-right-width: 0;
+  border-radius: 6px;
+  background: var(--vp-c-bg);
+  color: var(--vp-c-text-1);
+  font-size: 15px;
+  line-height: 1.35;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.vp-doc .doc-variant-switcher__row .doc-variant-switcher__button:first-of-type {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.vp-doc .doc-variant-switcher__row .doc-variant-switcher__button + .doc-variant-switcher__button {
+  border-radius: 0;
+}
+
+.vp-doc .doc-variant-switcher__row .doc-variant-switcher__button:last-child {
+  border-right-width: 1px;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+.vp-doc .doc-variant-switcher__button-name {
+  font-weight: 600;
+}
+
+.vp-doc .doc-variant-switcher__button-desc {
+  color: var(--vp-c-text-2);
+  font-size: 12.5px;
+  overflow-wrap: anywhere;
+}
+
+.vp-doc .doc-variant-switcher__button:hover {
+  border-color: var(--doc-switcher-accent-border);
+  background: var(--doc-switcher-accent-soft);
+}
+
+.vp-doc .doc-variant-switcher__button.is-selected {
+  border-color: var(--doc-switcher-accent-border);
+  background: var(--doc-switcher-accent);
+  color: var(--doc-switcher-accent-text);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  font-weight: 700;
+}
+
+.vp-doc .doc-variant-switcher__button.is-selected .doc-variant-switcher__button-desc {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.vp-doc .doc-level-one-block[hidden],
+.vp-doc .doc-level-two-block[hidden] {
+  display: none !important;
+}
+
+@media (max-width: 640px) {
+  .vp-doc .doc-variant-switcher {
+    padding: 14px 12px;
+  }
+
+  .vp-doc .doc-variant-switcher__row {
+    gap: 8px 0;
+  }
+
+  .vp-doc .doc-variant-switcher__label {
+    line-height: 24px;
+  }
+
+  .vp-doc .doc-variant-switcher__button {
+    min-height: 48px;
+    padding: 8px;
+    font-size: 14px;
+  }
+}
