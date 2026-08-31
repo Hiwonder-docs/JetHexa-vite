@@ -111,7 +111,7 @@ sudo snap install pycharm-community --classic
 
 
 
-### 1.3.3 Usage of pyCharm
+1.3.3 Usage of pyCharm
 
 (1) The user interface of pyCharm is as follow.
 
@@ -544,9 +544,9 @@ The table lists the commonly used operators by conditional expression.
         <tr><td>**</td><td>^</td><td>Exponentiation</td></tr>
         <tr><td rowspan="6">Comparison Operators</td><td>==</td><td>=</td><td>Equal</td></tr>
         <tr><td>!=</td><td>≠</td><td>Not equal</td></tr>
-        <tr><td>></td><td>></td><td>Greater than</td></tr>
+        <tr><td>&gt;</td><td>&gt;</td><td>Greater than</td></tr>
         <tr><td>&lt;</td><td>&lt;</td><td>Less than</td></tr>
-        <tr><td>>=</td><td>>=</td><td>Greater than or equal to</td></tr>
+        <tr><td>&gt;=</td><td>&gt;=</td><td>Greater than or equal to</td></tr>
         <tr><td>&lt;=</td><td>&lt;=</td><td>Less than or equal to</td></tr>
         <tr><td rowspan="2">Membership Operator</td><td>in</td><td>∈</td><td>Exist/ belong to</td></tr>
         <tr><td>not in</td><td>∉</td><td>Not exist/ not belong to</td></tr>
@@ -989,7 +989,7 @@ There are two return values inside the **calculate()** function, including **“
 
 There are two types of function parameters, including mutable and immutable, whose calling results are different.
 
-### 6.5.1 Mutable Parameter
+6.5.1 Mutable Parameter
 
 The calling of mutable parameter is similar to pass-by-reference in C++. If the mutable parameter is passed, such as list and dictionary, modification of the passed in parameters inside the function will affect the external variables.
 For example, after the passed in list **“list_01”** is changed inside **change_int()** function, the external variable will also be changed. 
@@ -1006,7 +1006,7 @@ print("Variable value outside function:", list_01)
 
 <img src="../_static/media/chapter_3/section_6/image4.png" style="width:700px" />
 
-### 6.5.2 Immutable Parameter
+6.5.2 Immutable Parameter
 
 Calling immutable parameters is similar to C++ pass-by-value. If immutable parameters are called, such as integer, string and tuple, the modification of the passed in parameter inside the function will not affect the external variable.
 
@@ -1026,7 +1026,7 @@ print(b)
 
 ### 3.6.6 Parameter Type 
 
-### 6.6.1 Positional Parameter
+6.6.1 Positional Parameter
 
 When calling function, each argument is associated with the corresponding parameter in positional order, and this association is called a positional parameter.  
 Take the code below for example. When calling **describe_student()** function, name and age parameters should be offered in sequence. **“Jack”** and “18” are respectively stored in “person_name” and “student_age”. 
@@ -1041,7 +1041,7 @@ describe_student('Jack', '18')
 
 <img src="../_static/media/chapter_3/section_6/image6.png" style="width:700px" />
 
-### 6.6.2 Default Parameter
+6.6.2 Default Parameter
 
 When defining functions, we can specify the default value of each parameter. When calling function, if arguments are provided to parameters, adopt the designated argument. Otherwise, the default value of parameter should be adopted.  
 For example, set the default value of **“student_age”** parameter as **“18”**. When argument is offered to **“student_age”** parameter during calling describe_student() function, adopt the designated argument. And the designated argument of this example is **“20”**.
@@ -1057,7 +1057,7 @@ describe_student('Jack')
 
 <img src="../_static/media/chapter_3/section_6/image7.png" style="width:700px" />
 
-### 6.6.3 Variable-length Parameter
+6.6.3 Variable-length Parameter
 
 In Python, function can also be defined as variable-length parameter which is also called mutable parameter. By adding “*” in front of the identifier, the corresponding parameter can be defined as variable-length parameter.  
 Take the codes below for example. After parameter “number” is defined as variable-length parameter, the called calculate() function can be directly used even though the passed in parameters are neither list nor tuple.
@@ -1075,7 +1075,7 @@ print(calculate())
 
 <img src="../_static/media/chapter_3/section_6/image8.png" style="width:700px" />
 
-### 6.6.4 Keyword Parameter
+6.6.4 Keyword Parameter
 
 Keyword parameter will be passed by **“parameter name-value”** pair. In this way, when designating the argument of function, the position of argument and parameter can be different and we just need to ensure the parameter name is correct. 
 Check the code below. When passing the parameter, the function can output normally though the parameter order is adjusted. 
@@ -1090,7 +1090,7 @@ def describe_student(person_name,student_age):
 
 <img src="../_static/media/chapter_3/section_6/image9.png" style="width:700px" />
 
-### 6.6.5 Named Keyword Argument
+6.6.5 Named Keyword Argument
 
 Named keyword arguments can be used when it is necessary to restrict parameters to be passed only by keyword. In user-defined function, parameters are separated by “*” and the parameters following “*” are named keyword parameter.  
 Take the codes below for example. **“live_city” following** “*” is named keyword parameter. Therefore, the parameters must be passed by keyword, otherwise the program will throw error.  
@@ -1158,7 +1158,7 @@ list1 = [123, "123", [123, 456]]
 
  **3.7.2.2 Tuple**
 
-(1) Syntax: `(123, 456, 789, 100)`
+(1) Syntax：（123，456，789，100）。Syntax: (123，456，789，100) 
 
 (2) Format: surrounded by bracket and the elements are separated by comma. The elements can be nested, but the type of elements must be unified. They can be read by subscript, but cannot be written, added or deleted. 
 
@@ -1170,7 +1170,7 @@ tuple1 = (123, 456, 789)
 
  **3.7.2.3 Set**
 
-(1) Syntax: `{ 1, "23", classObjectA }`
+(1) Syntax: { 1，"23"，classObjectA } 
 
 (2)Format: it is surrounded by curly bracket. Its elements are separated by comma. The type of the elements is diverse, and they can be nested, and read and written by subscript
 
@@ -1183,7 +1183,7 @@ set1 = {123, "123"}
 
 **3.7.2.4 Dictionary** 
 
-(1) Syntax: `{"name": "zhangsan", "age": 50}`
+(1) Syntax：`{"name": "zhangsan", "age": 50}`
 
 (2) Format: it is surrounded by curly bracket and the elements are separated by comma. The elements should be in unified format (When the elements are separated by semicolon, the front part should be string and the latter part can be any types.) and Key must be string.  If there is no semicolon within some element, dictionary will be considered as Set.
 
@@ -1475,7 +1475,7 @@ In normal case, exception occurs when the program cannot be processed normally i
 
   
 
-### 9.2.1 Exception Handling 
+9.2.1 Exception Handling 
 
 Exceptions may be thrown while the code is being interpreted and executed, and exceptions can be handled in a **try....except...** way. If an exception occurs in the code in **try**, it will jump to **except** to catch and handle the exception.
 

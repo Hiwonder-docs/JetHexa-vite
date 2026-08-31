@@ -36,7 +36,7 @@ function parseArgs(argv) {
     const readValue = () => {
       const value = argv[index + 1]
       if (!value || value.startsWith('--')) {
-        throw new Error(`${arg} 闇€瑕佷竴涓€糮)
+        throw new Error(`${arg} 需要一个值`)
       }
       index += 1
       return value
@@ -59,30 +59,30 @@ function parseArgs(argv) {
     } else if (arg === '--keep-originals') {
       args.keepOriginals = true
     } else {
-      throw new Error(`涓嶆敮鎸佺殑鍙傛暟锛?{arg}`)
+      throw new Error(`不支持的参数：${arg}`)
     }
   }
 
   if (!args.dist) {
-    throw new Error('蹇呴』浼犲叆 --dist')
+    throw new Error('必须传入 --dist')
   }
   if (!Number.isFinite(args.minKb) || args.minKb < 0) {
-    throw new Error('--min-kb 蹇呴』鏄ぇ浜庣瓑浜?0 鐨勬暟瀛?)
+    throw new Error('--min-kb 必须是大于等于 0 的数字')
   }
   if (!Number.isFinite(args.quality) || args.quality < 1 || args.quality > 100) {
-    throw new Error('--quality 蹇呴』鏄?1 鍒?100 涔嬮棿鐨勬暟瀛?)
+    throw new Error('--quality 必须是 1 到 100 之间的数字')
   }
   if (!Number.isFinite(args.alphaQuality) || args.alphaQuality < 0 || args.alphaQuality > 100) {
-    throw new Error('--alpha-quality 蹇呴』鏄?0 鍒?100 涔嬮棿鐨勬暟瀛?)
+    throw new Error('--alpha-quality 必须是 0 到 100 之间的数字')
   }
   if (!Number.isFinite(args.maxEdge) || args.maxEdge < 0) {
-    throw new Error('--max-edge 蹇呴』鏄ぇ浜庣瓑浜?0 鐨勬暟瀛?)
+    throw new Error('--max-edge 必须是大于等于 0 的数字')
   }
   if (!Number.isFinite(args.effort) || args.effort < 0 || args.effort > 6) {
-    throw new Error('--effort 蹇呴』鏄?0 鍒?6 涔嬮棿鐨勬暟瀛?)
+    throw new Error('--effort 必须是 0 到 6 之间的数字')
   }
   if (!Number.isFinite(args.workers) || args.workers < 1) {
-    throw new Error('--workers 蹇呴』鏄ぇ浜庣瓑浜?1 鐨勬暟瀛?)
+    throw new Error('--workers 必须是大于等于 1 的数字')
   }
 
   args.minBytes = Math.round(args.minKb * 1024)
@@ -135,15 +135,15 @@ async function reportLargeFinalImages(assetsDir) {
   const overFiveMb = largeImages.filter((item) => item.bytes > 5 * 1024 * 1024).length
 
   console.log(
-    'WebP 浜х墿澶у浘妫€鏌? ' +
-      `${imageStats.length} 寮犳渶缁堝浘鐗囷紝瓒呰繃 1MB ${largeImages.length} 寮狅紝` +
-      `瓒呰繃 2MB ${overTwoMb} 寮狅紝瓒呰繃 5MB ${overFiveMb} 寮犮€俙
+    'WebP 产物大图检查: ' +
+      `${imageStats.length} 张最终图片，超过 1MB ${largeImages.length} 张，` +
+      `超过 2MB ${overTwoMb} 张，超过 5MB ${overFiveMb} 张。`
   )
   for (const item of largeImages.slice(0, 10)) {
     console.log(`- ${toPosixPath(path.relative(assetsDir, item.filePath))}: ${formatBytes(item.bytes)}`)
   }
   if (largeImages.length > 10) {
-    console.log(`- 鍏朵綑 ${largeImages.length - 10} 寮犺秴杩?1MB 鐨勫浘鐗囨湭灞曞紑銆俙)
+    console.log(`- 其余 ${largeImages.length - 10} 张超过 1MB 的图片未展开。`)
   }
 }
 
@@ -268,9 +268,9 @@ function createConversionProgress(total) {
     const elapsedSeconds = Math.max(0.001, (Date.now() - startedAt) / 1000)
     const rate = stats.processed / elapsedSeconds
     console.log(
-      'WebP 杞爜杩涘害: ' +
-        `${stats.processed}/${total}锛岀敓鎴?${stats.converted} 寮狅紝璺宠繃 ${stats.skipped} 寮狅紝` +
-        `澶辫触 ${stats.errors} 寮狅紝鑺傜渷 ${formatBytes(stats.savedBytes)}锛岄€熷害 ${rate.toFixed(1)} 寮?绉掋€俙
+      'WebP 转码进度: ' +
+        `${stats.processed}/${total}，生成 ${stats.converted} 张，跳过 ${stats.skipped} 张，` +
+        `失败 ${stats.errors} 张，节省 ${formatBytes(stats.savedBytes)}，速度 ${rate.toFixed(1)} 张/秒。`
     )
     lastLoggedAt = Date.now()
     lastLoggedProcessed = stats.processed
@@ -334,7 +334,7 @@ async function replaceReferences(distDir, conversions) {
   const progressStep = Math.max(10, Math.min(100, Math.floor(files.length / 10) || 10))
 
   if (replacementPairs.length) {
-    console.log(`WebP 寮曠敤鏀瑰啓寮€濮? ${files.length} 涓骇鐗╂枃浠讹紝${replacementPairs.length} 寮?WebP銆俙)
+    console.log(`WebP 引用改写开始: ${files.length} 个产物文件，${replacementPairs.length} 张 WebP。`)
   }
 
   for (const filePath of files) {
@@ -367,9 +367,9 @@ async function replaceReferences(distDir, conversions) {
     ) {
       const elapsedSeconds = Math.max(0.001, (now - startedAt) / 1000)
       console.log(
-        'WebP 寮曠敤鏀瑰啓杩涘害: ' +
-          `${processedFiles}/${files.length}锛屽凡鏀瑰啓 ${changedFiles} 涓枃浠讹紝` +
-          `閫熷害 ${(processedFiles / elapsedSeconds).toFixed(1)} 鏂囦欢/绉掋€俙
+        'WebP 引用改写进度: ' +
+          `${processedFiles}/${files.length}，已改写 ${changedFiles} 个文件，` +
+          `速度 ${(processedFiles / elapsedSeconds).toFixed(1)} 文件/秒。`
       )
       lastLoggedAt = now
     }
@@ -384,19 +384,19 @@ async function main() {
   const assetsDir = path.join(distDir, 'assets')
 
   if (!await fileExists(distDir)) {
-    throw new Error(`dist 鐩綍涓嶅瓨鍦細${distDir}`)
+    throw new Error(`dist 目录不存在：${distDir}`)
   }
   if (!await fileExists(assetsDir)) {
-    console.log('WebP 杞爜宸茶烦杩囷細dist/assets 涓嶅瓨鍦?)
+    console.log('WebP 转码已跳过：dist/assets 不存在')
     return
   }
 
   const allFiles = await walkFiles(assetsDir)
   const sourceImages = allFiles.filter((filePath) => supportedSourceExts.has(path.extname(filePath).toLowerCase()))
   console.log(
-    'WebP 杞爜鎵弿: ' +
-      `${sourceImages.length} 寮犲€欓€夊浘锛岄槇鍊?${options.minKb}KB锛岃川閲?${options.quality}锛宍 +
-      `閫忔槑璐ㄩ噺 ${options.alphaQuality}锛屾渶闀胯竟 ${options.maxEdge || '涓嶉檺鍒?}锛屽苟鍙?${options.workers}銆俙
+    'WebP 转码扫描: ' +
+      `${sourceImages.length} 张候选图，阈值 ${options.minKb}KB，质量 ${options.quality}，` +
+      `透明质量 ${options.alphaQuality}，最长边 ${options.maxEdge || '不限制'}，并发 ${options.workers}。`
   )
   const conversionProgress = createConversionProgress(sourceImages.length)
   const results = await runLimited(sourceImages, options.workers, async (filePath) => {
@@ -435,9 +435,9 @@ async function main() {
     ) {
       const elapsedSeconds = Math.max(0.001, (now - cleanupStartedAt) / 1000)
       console.log(
-        'WebP 鍘熷浘娓呯悊杩涘害: ' +
-          `${cleanedPairs}/${referenceResult.replacementPairs.length}锛屽垹闄ゅ師鍥?${removedOriginals} 寮狅紝` +
-          `閫熷害 ${(cleanedPairs / elapsedSeconds).toFixed(1)} 寮?绉掋€俙
+        'WebP 原图清理进度: ' +
+          `${cleanedPairs}/${referenceResult.replacementPairs.length}，删除原图 ${removedOriginals} 张，` +
+          `速度 ${(cleanedPairs / elapsedSeconds).toFixed(1)} 张/秒。`
       )
       lastCleanupLoggedAt = now
     }
@@ -461,24 +461,24 @@ async function main() {
   }
 
   console.log(
-    'WebP 杞爜宸插鐞? ' +
-      `${stats.scanned} 寮犲€欓€夊浘锛岀敓鎴?${stats.converted} 寮狅紝鍏朵腑缂╂斁 ${stats.resized} 寮狅紝寮曠敤 ${stats.referenced} 寮狅紝` +
-      `鏀瑰啓 ${stats.changedFiles} 涓骇鐗╂枃浠讹紝鍒犻櫎鍘熷浘 ${stats.removedOriginals} 寮狅紝` +
-      `鑺傜渷 ${(stats.savedBytes / 1024 / 1024).toFixed(2)}MB銆俙
+    'WebP 转码已处理: ' +
+      `${stats.scanned} 张候选图，生成 ${stats.converted} 张，其中缩放 ${stats.resized} 张，引用 ${stats.referenced} 张，` +
+      `改写 ${stats.changedFiles} 个产物文件，删除原图 ${stats.removedOriginals} 张，` +
+      `节省 ${(stats.savedBytes / 1024 / 1024).toFixed(2)}MB。`
   )
 
   if (stats.unusedConversions) {
-    console.log(`WebP 杞爜娓呯悊: ${stats.unusedConversions} 寮?WebP 鏈湪浜х墿涓壘鍒板紩鐢紝宸插垹闄ゃ€俙)
+    console.log(`WebP 转码清理: ${stats.unusedConversions} 张 WebP 未在产物中找到引用，已删除。`)
   }
   if (stats.skippedSmall || stats.skippedLarger || stats.skippedExisting) {
     console.log(
-      'WebP 杞爜璺宠繃: ' +
-        `灏忓浘 ${stats.skippedSmall} 寮狅紝杞悗鏇村ぇ ${stats.skippedLarger} 寮狅紝宸插瓨鍦?WebP ${stats.skippedExisting} 寮犮€俙
+      'WebP 转码跳过: ' +
+        `小图 ${stats.skippedSmall} 张，转后更大 ${stats.skippedLarger} 张，已存在 WebP ${stats.skippedExisting} 张。`
     )
   }
   if (stats.errors) {
     const samples = results.filter((item) => item.status === 'error').slice(0, 5)
-    console.log(`WebP 杞爜澶辫触: ${stats.errors} 寮狅紝绀轰緥锛歚)
+    console.log(`WebP 转码失败: ${stats.errors} 张，示例：`)
     for (const item of samples) {
       console.log(`- ${toPosixPath(path.relative(distDir, item.source))}: ${item.error}`)
     }

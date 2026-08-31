@@ -1,8 +1,8 @@
-# 4. OpenCV Computer Vision Lesson
+# 5. OpenCV Computer Vision Lesson
 
-## 4.1 Computer Vision and OpenCV Introduction
+## 5.1 Computer Vision and OpenCV Introduction
 
-### 4.1.1 How robots “see” the world
+### 5.1.1 How robots “see” the world
 
 For artificial intelligence, the ability to see is essential. And how robots see the world involves machine vision, an important branch of artificial intelligence.
 
@@ -10,7 +10,7 @@ Machine vision is the idea that the robot takes human’s place to measure and m
 
 Image system perform various operations on these signals to extract the features of the target, so as to control the device in the field based on the judgments.
 
-### 4.1.2 Common Applications of Machine Vision Technology
+### 5.1.2 Common Applications of Machine Vision Technology
 
 With advances in artificial intelligence and wireless technologies, machine vision has expanded across industrial manufacturing, agriculture, defense, medical care, aerospace, transportation, scientific research, and security. Common application domains are detailed below.
 
@@ -28,7 +28,7 @@ Standard appliances operate via remote controllers or mobile apps. Integrating c
 
 For example, facial recognition entry systems integrate with indoor appliances to identify residents and visitors, automatically controlling access locks and home devices.
 
-### 4.1.3 Image Recognition Introduction
+### 5.1.3 Image Recognition Introduction
 
 Image recognition is a crucial technique that uses computer to process and analyze the image so as to recognize different targets.  
 
@@ -46,7 +46,7 @@ The process of computer image recognition is no different from that of human ima
 
 Image recognition is mostly applied in remote sensing image recognition and robot vision.
 
-### 4.1.4 Common Applications of Image Recognition Technology
+### 5.1.4 Common Applications of Image Recognition Technology
 
 Image recognition technology holds a central position in artificial intelligence. Ongoing technical advances continue to expand its practical applications.
 
@@ -58,7 +58,7 @@ Aerial and satellite remote sensing images utilize image recognition algorithms 
 
 Image processing constitutes a vital component of robotics technology. Widespread deployments include autonomous delivery vehicles, domestic service robots, robotic vacuum cleaners, and educational robotics platforms.
 
-### 4.1.5 OpenCV Introduction
+### 5.1.5 OpenCV Introduction
 
 OpenCV (Open Source Capture Vision) is a computer vision library for free handling various tasks about image and video, for example display the image collected by the camera and make the robot recognize the real object.
 
@@ -66,7 +66,7 @@ OpenCV (Open Source Capture Vision) is a computer vision library for free handli
 
 OpenCV is more eminent than PIL, the built-in image processing library in Python. OpenCV provides complete Python interfaces, and Python3.5 and opencv-python library file have been integrated in the provided image system.
 
-### 4.1.6 How Images are Stored in Computer
+### 5.1.6 How Images are Stored in Computer
 
 How the images are stored in computer after they are recognized?
 
@@ -78,39 +78,39 @@ For a BGR image, the first value of the element “**image[0,0,0]**” represent
 
 Same as Python array, these array recording images can be accessed individually to obtain the data of some color channel or capture a region of the image.
 
-## 4.2 Build OpenCV Environment
+## 5.2 Build OpenCV Environment
 
 :::{Note]
 All procedures in this document assume an official Ubuntu image installation. Prior mirror modifications such as Tsinghua or Alibaba repositories may cause OpenCV package installation failures.
 :::
 
-### 4.2.1 Install Numpy
+### 5.2.1 Install Numpy
 
 Each picture involves several pixels, which results in that a large number of arrays need to be processed in the program. Numpy is a extension library for Python, which handles multi-dimensional arrays more efficiently than Python's native array structures. Besides, it can improve the readability of codes.
 
 Open command line terminal and then input command “**pip install numpy**” to install Numpy. 
 
-```commandline
+```bash
 pip3 install numpy
 ```
 
-### 4.2.2 Install OpenCV from Ubuntu Repository
+### 5.2.2 Install OpenCV from Ubuntu Repository
 
 OpenCV package can be obtained from Ubuntu repository. Then refresh the packages index and install the OpenCV package by typing the following commands.
 
 (1) **sudo apt update:** refresh the packages index
 
-```commandline
+```bash
 sudo apt update
 ```
 
 (2) **sudo apt install python3-opencv:** Install the package. During installation, input “y” to continue the execution and the complete installation may take 10s.
 
-```commandline
+```bash
 sudo apt install python3-opencv
 ```
 
-### 4.2.3 Verify the Installation of OpenCV
+### 5.2.3 Verify the Installation of OpenCV
 
 We can import cv2 module to print the version of OpenCV so as to verify whether the installation is successful or not.
 
@@ -124,9 +124,9 @@ If the version of OpenCV is printed, the installation is successful.
 
 <img src="../_static/media/chapter_4/section_2/image5.png"  />
 
-## 4.3 OpenCV Modules and Components
+## 5.3 OpenCV Modules and Components
 
-### 4.3.1 OpenCV Component
+### 5.3.1 OpenCV Component
 
 OpenCV is composed of several layers of modules.
 
@@ -140,7 +140,7 @@ OpenCV is composed of several layers of modules.
 
 <img src="../_static/media/chapter_4/section_3/image1.png"  />
 
-### 4.3.2 Specific Module of OpenCV
+### 5.3.2 Specific Module of OpenCV
 
 (1) Core: Contain the basic structure and operation of OpenCV library.
 
@@ -176,9 +176,9 @@ OpenCV is composed of several layers of modules.
 
 Compared with GPU module, it has fewer functions, but it aims at providing the parallel devices that can run on any GPU or is powered by Khronos. However, GPU module can only run on Nvidia GPU devices for the reason that it utilizes Nvidia CUDA toolkit to develop.
 
-## 4.4 Picture & Video Loading and Display
+## 5.4 Picture & Video Loading and Display
 
-### 4.4.1 Image Reading and Writing
+### 5.4.1 Image Reading and Writing
 
 Read image: cv2.imread(Location，Model)
 
@@ -198,7 +198,7 @@ Pic——Pictures to be displayed(The image read by cv2.imread() has already use
 cv2 waitkey() allows users to display a window for given milliseconds or until any key is pressed. And cv2.destroyALLWindows() function will close all the windows.
 :::
 
-### 4.4.2 Video Reading and Writing
+### 5.4.2 Video Reading and Writing
 
 Video can be seen as pictures that are switched swiftly. Therefore, video reading is the extension of the image reading and writing. Camera initialization: cv2.VideoCapture(Number) 
 
@@ -218,7 +218,7 @@ For example, the camera screen will be displayed on the desktop. When q key is p
 cv2.waitKey(delay) will wait for the input from the keyboard and can be used to refresh the image in the video. “**delay**” in the bracket indicates the waiting time. When a frame of picture is displayed, the program will display the next frame in “delay” ms.
 :::
 
-### 4.4.3 Feature Demonstration
+### 5.4.3 Feature Demonstration
 
 :::{Note}
 Command entries are strictly case-sensitive and the Tab key can be pressed for keyword auto-completion.
@@ -246,13 +246,13 @@ Video Reading and Writing: show_test_2
 
 5. Open a terminal, enter "**cd Desktop**", and press Enter to navigate to the Desktop directory.
 
-```commandline
+```bash
 cd Desktop
 ```
 
 6. Run the image reading routine by entering "**sudo python3 show_test_1.py**" and pressing Enter.
 
-```commandline
+```bash
 sudo python3 show_test_1.py
 ```
 
@@ -262,7 +262,7 @@ Upon execution, the imported image displays as shown below.
 
 7. Run the video reading routine by entering "**sudo python3 show_test_2.py**" and pressing Enter.
 
-```commandline
+```bash
 sudo python3 show_test_2.py
 ```
 
@@ -272,11 +272,11 @@ The image below shows the live camera feed.
 
 8. Select the terminal window and press Ctrl+C to terminate the program.
 
-## 4.5 Image Drawing
+## 5.5 Image Drawing
 
 Drawing function in OpenCV can be used to draw line, rectangle, circle, etc., and add texts to the designated position of the picture.
 
-### 4.5.1 Draw Line
+### 5.5.1 Draw Line
 
 Function format: **cv2.line(image,pt1,pt2,color,thickness)** 
 
@@ -292,7 +292,7 @@ Function format: **cv2.line(image,pt1,pt2,color,thickness)**
 
 <img src="../_static/media/chapter_4/section_5/image1.png"  />
 
-### 4.5.2 Draw Rectangle
+### 5.5.2 Draw Rectangle
 
 Function format: **cv2.rectangle(image,pt1,pt2,color,thickness)** 
 
@@ -308,7 +308,7 @@ Function format: **cv2.rectangle(image,pt1,pt2,color,thickness)**
 
 <img src="../_static/media/chapter_4/section_5/image2.png"  />
 
-### 4.5.3 Draw Circle
+### 5.5.3 Draw Circle
 
 Function format: **cv2.circle(image,center,radius,color,thickness)** 
 
@@ -324,7 +324,7 @@ Function format: **cv2.circle(image,center,radius,color,thickness)**
 
 <img src="../_static/media/chapter_4/section_5/image3.png"  />
 
-### 4.5.4 Draw Polygon
+### 5.5.4 Draw Polygon
 
 Function format: **cv2.polylines(image,pts,isClosed,color,thickness)**
 
@@ -340,7 +340,7 @@ Function format: **cv2.polylines(image,pts,isClosed,color,thickness)**
 
 <img src="../_static/media/chapter_4/section_5/image4.png"  />
 
-### 4.5.5 Add Text
+### 5.5.5 Add Text
 
 Function format: **cv2.putText(image,text,pt,font,fontScale,color)** 
 
@@ -358,7 +358,7 @@ Function format: **cv2.putText(image,text,pt,font,fontScale,color)**
 
 <img src="../_static/media/chapter_4/section_5/image5.png"  />
 
-### 4.5.6 Feature Demonstration
+### 5.5.6 Feature Demonstration
 
 :::{Note}
 Command entries are strictly case-sensitive and the Tab key can be pressed for keyword auto-completion.
@@ -394,39 +394,39 @@ Draw Text: cv2_putText
 
 6. Line drawing: Enter "**sudo python3 ./Desktop/cv2_line.py**" and press Enter to execute.
 
-```commandline
+```bash
 sudo python3 ./Desktop/cv2_line.py
 ```
 
 Rectangle drawing: Enter "**sudo python3 ./Desktop/cv2_rectangle.py**" and press Enter to execute.
 
-```commandline
+```bash
 sudo python3 ./Desktop/cv2_rectangle.py
 ```
 
 Circle drawing: Enter "**sudo python3 ./Desktop/cv2_circle.py**" and press Enter to execute.
 
-```commandline
+```bash
 sudo python3 ./Desktop/cv2_circle.py
 ```
 
 Polygon drawing: Enter "**sudo python3 ./Desktop/cv2_polylines.py**" and press Enter to execute.
 
-```commandline
+```bash
 sudo python3 ./Desktop/cv2_polylines.py
 ```
 
 Text drawing: Enter "**sudo python3 ./Desktop/cv2_putText.py**" and press Enter to execute.
 
-```commandline
+```bash
 sudo python3 ./Desktop/cv2_putText.py
 ```
 
 7. Select the terminal window and press Ctrl+C to terminate the program.
 
-## 4.6 Image Basic Operation
+## 5.6 Image Basic Operation
 
-### 4.6.1 Acquire and Modify the Pixel of the Image
+### 5.6.1 Acquire and Modify the Pixel of the Image
 
 The value of the pixel can be acquired through the coordinate of row and column. For BGR image, an array consisting of blue, green and red values will be returned. For grayscale image, the corresponding intensity will be returned. And the pixel can be modified in this way. 
 
@@ -438,7 +438,7 @@ The value of the pixel can be acquired through the coordinate of row and column.
 
 <img src="../_static/media/chapter_4/section_6/image1.png"  />
 
-### 4.6.2 Acquire the Image Property
+### 5.6.2 Acquire the Image Property
 
 **(1) shape:** If it is a color picture, acquire the shape of the image and return an array containing the number of row, column and channel. If it is binary image or grayscale image, only the number of row and column will be returned. Through judging whether the returned value contains the number of channel, we can know that it is a grayscale picture or color picture.  
 
@@ -448,21 +448,21 @@ The value of the pixel can be acquired through the coordinate of row and column.
 
 <img src="../_static/media/chapter_4/section_6/image2.png"  />
 
-### 4.6.3 Splitting and Merging of Image Channel
+### 5.6.3 Splitting and Merging of Image Channel
 
-**4.6.3.1 Splitting of Image Channel**
+**5.6.3.1 Splitting of Image Channel**
 
 **split**：Input the image to be split and return the picture with three individual color channels.
 
 <img src="../_static/media/chapter_4/section_6/image3.png"  />
 
-**4.6.3.2 Merging of Image Channel**
+**5.6.3.2 Merging of Image Channel**
 
 **merge**：Merge three individual channels, including B, G and R into BGR image with three channel.
 
 <img src="../_static/media/chapter_4/section_6/image4.png"  />
 
-### 4.6.4 Color Space Conversion
+### 5.6.4 Color Space Conversion
 
 There more than 150 ways to convert colors in OpenCV. And BGR is commonly converted into GRAY and HSV. The function format is **cvtColor(img,flag).** 
 
@@ -472,7 +472,7 @@ There more than 150 ways to convert colors in OpenCV. And BGR is commonly conver
 
 <img src="../_static/media/chapter_4/section_6/image5.png"  />
 
-### 4.6.5 Feature Demonstration
+### 5.6.5 Feature Demonstration
 
 :::{Note}
 Command entries are strictly case-sensitive and the Tab key can be pressed for keyword auto-completion.
@@ -508,39 +508,39 @@ Color Space Conversion: cv2_Color_format
 
 6. Modify pixel values: Enter "**sudo python3 ./Desktop/cv2_pixel.py**" and press Enter to execute.
 
-```commandline
+```bash
 sudo python3 ./Desktop/cv2_pixel.py
 ```
 
 Image properties: Enter "**sudo python3 ./Desktop/cv2_property.py**" and press Enter to execute.
 
-```commandline
+```bash
 sudo python3 ./Desktop/cv2_property.py
 ```
 
 Channel splitting: Enter "**sudo python3 ./Desktop/cv2_img_split.py**" and press Enter to execute.
 
-```commandline
+```bash
 sudo python3 ./Desktop/cv2_img_split.py
 ```
 
 Channel merging: Enter "**sudo python3 ./Desktop/cv2_img_merge.py**" and press Enter to execute.
 
-```commandline
+```bash
 sudo python3 ./Desktop/cv2_img_merge.py
 ```
 
 Color space conversion: Enter "**sudo python3 ./Desktop/cv2_Color_format.py**" and press Enter to execute.
 
-```commandline
+```bash
 sudo python3 ./Desktop/cv2_Color_format.py
 ```
 
 7. Select the terminal window and press Ctrl+C to terminate the program.
 
-## 4.7 Image Processing---Color Space Conversion
+## 5.7 Image Processing---Color Space Conversion
 
-### 4.7.1 Color Space Introduction
+### 5.7.1 Color Space Introduction
 
 Each frame of the picture is arranged by the pixels that are composed of three color components, including B, G and R.
 
@@ -554,9 +554,9 @@ Color space conversion refers to transform the image from one color space to ano
 
 Some common color spaces are listed below. 
 
-### 4.7.2 Common Color Space
+### 5.7.2 Common Color Space
 
-- #### 4.7.2.1 RGB Color Space
+- #### 5.7.2.1 RGB Color Space
 
 The properties of RGB color space are as follow.
 
@@ -568,7 +568,7 @@ From the blue channel picture in indoor, blue is similar to white. However, from
 
 <img src="../_static/media/chapter_4/section_7/image1.png" style="width:5.14583in;height:2.625in" class="common_img" />
 
-- #### 4.7.2.2 Lab Color Space
+- #### 5.7.2.2 Lab Color Space
 
 Similar to RGB, Lab also has three image channels. 
 
@@ -612,7 +612,7 @@ In OpenCV, the image converted into Lab color space is as follow.
 
 <img src="../_static/media/chapter_4/section_7/image4.png" style="width:5.76806in;height:3.00694in" class="common_img" />
 
-- #### 4.7.2.3 Ycrcb Color Space
+- #### 5.7.2.3 Ycrcb Color Space
 
 HVS (Human Visual System) is less sensitive to color than to luminance. In traditional RGB color space, three primary colors, RGB, bear the same importance, but luminance is overlooked. 
 
@@ -622,7 +622,7 @@ In YCrCb color space, Y represents luminance, and Cr and Cb stand for chroma. Cr
 
 Observations focusing on intensity and color components can be made for LAB for illumination changes. Compared with LAB, the perception difference between red and orange in outdoor is smaller, while white between three components are distinguished. 
 
-- #### 4.7.2.4 HSV Color Space
+- #### 5.7.2.4 HSV Color Space
 
 HSV color space is vision perception oriented color model which is composed of these three components.
 
@@ -646,13 +646,13 @@ S components in outdoor and indoor are also similar. V stands for brightness so 
 
 The difference of red value between indoor and outdoor is large for the reason that H component represent red by angle ranging from [300,360] and [0,60]. 
 
-- #### 4.7.2.5 Gray Color Space
+- #### 5.7.2.5 Gray Color Space
 
 GRAY color space generally refers to grayscale image, monochromatic image, in which each pixel is processed into 256 gray level from black to white.  
 
 These 256 gray levels are represented by the number within [0,255]. “0” indicates pure black, and “255” represents white. Number from 0 to 255 denote dark gray or light gray of different brightness (shade of hue).  
 
-### 4.7.3 Color Conversion
+### 5.7.3 Color Conversion
 
 The function below is used to transform color.
 
@@ -685,7 +685,7 @@ Take cv2.cvtColor(frame, cv2.COLOR_RGB2LAB) for example.
 
 Follow the following steps to transform the pictures into some common color spaces. 
 
-- #### 4.7.3.1 Operation Steps
+- #### 5.7.3.1 Operation Steps
 
 Before operation, please move to “**[OpenCV Computer Vision Lesson\7.Image Processing---Color Space Conversion\Sample Code]()**”, and copy the sample routine “**color_conversion.py**” and picture “img1.jpg” into the shared folder
 
@@ -715,23 +715,23 @@ For how to configure the shared folder, please refer to the file in “**[Linux 
 
 6. Open a terminal, enter "**cd Desktop**", and press Enter to navigate to the Desktop directory.
 
-```commandline
+```bash
 cd Desktop
 ```
 
 7. Enter "**python3 color_conversion.py**" and press Enter to run the routine.
 
-```commandline
+```bash
 python3 color_conversion.py
 ```
 
-- #### 4.7.3.2 Demonstration Result
+- #### 5.7.3.2 Demonstration Result
 
 After execution, the final processed result is as follow. 
 
 <img src="../_static/media/chapter_4/section_7/image14.png" style="width:5.76042in;height:3.72986in" class="common_img" />
 
-- #### 4.7.3.3 Program Analysis
+- #### 5.7.3.3 Program Analysis
 
 （1）Firstly, import the required module with import statement.
 
@@ -782,15 +782,15 @@ cv2.waitKey() is a keyboard binding function. Its time unit is milliseconds (ms)
 
 cv2.destroyAllWindows() is used to delete the window. If there is no parameter in the bracket, all the windows will be deleted. If you input the specific value of the window, the designated window will be removed. 
 
-- #### 4.7.3.4 File Management
+- #### 5.7.3.4 File Management
 
 Move this file to directory "home\pi\OpenCV_vision\Color_conversion" for future reference. Create directory OpenCV_vision\Color_conversion in the home folder if not already existing.
 
 <img src="../_static/media/chapter_4/section_7/image21.png"  class="common_img"  />
 
-## 4.8 Image Processing --- Geometric Transformation
+## 5.8 Image Processing --- Geometric Transformation
 
-### 4.8.1 Introduction
+### 5.8.1 Introduction
 
 A spatial transformation of an image is a geometric transformation of the image coordinate system. It map the coordinate of a picture to a new coordinate of other picture. And geometric transformation will not change the pixel of the image, but rearrange the pixels on the image plane.
 
@@ -798,7 +798,7 @@ According to OpenCV functions, we divide mapping into scaling, flipping,affine t
 
 
 
-### 4.8.2 Import Routine
+### 5.8.2 Import Routine
 
 Transfer the routine directory located in the same path to the system desktop via VNC file transfer prior to operation.
 
@@ -822,7 +822,7 @@ All routines utilized in this section display below:
 
 <img src="../_static/media/chapter_4/section_8/image6.png"  class="common_img" />
 
-### 4.8.3 Scaling
+### 5.8.3 Scaling
 
 Scaling is to adjust the size of the picture, for example zoom in or zoom out the picture. In OpenCV, cv2.resize() function is used to scale the image.  
 
@@ -893,7 +893,7 @@ dst represents the output image whose type is the same as src. And its size is d
 </table>
 
 
-- #### 4.8.3.1 Operation Steps
+- #### 5.8.3.1 Operation Steps
 
 The program will scale the image.
 
@@ -903,17 +903,17 @@ The program will scale the image.
 
 （1）Input command “**cd Desktop**” and press Enter to enter the shared folder。
 
-```commandline
+```bash
 cd Desktop/
 ```
 
 （2）Input command “**python3 Scale.py**” and press Enter to run the code.
 
-```commandline
+```bash
 python3 Scale.py
 ```
 
-- #### 4.8.3.2 Program Outcome
+- #### 5.8.3.2 Program Outcome
 
 The final output picture is as follow.
 
@@ -925,7 +925,7 @@ The final output picture is as follow.
 
 **(3) res2:** The size of the picture after zoomed out. And its size is 295*258 pixels(width*height)
 
-**4.8.3.3 Program Analysis**
+**5.8.3.3 Program Analysis**
 
 The routine “**Scale.py**” can be found in “**[OpenCV Computer Vision Lesson->8.Image Processing---Geometric Transformation->Routine Code->Scale.py]()**”.
 
@@ -981,7 +981,7 @@ To zoom out the picture, this routine will shrink the res2 width to 0.6 times th
 
 <img src="../_static/media/chapter_4/section_8/image14.png" class="common_img" />
 
-### 4.8.4 Affine Transformation
+### 5.8.4 Affine Transformation
 
 Affine transformation is that images can be translated, rotated, etc. through a series of geometric transformations, while lines and parallelism can be preserved. 
 
@@ -1023,7 +1023,7 @@ By transformation matrix M, transform the original image src into the target ima
 
 Therefore, the type of affine transformation relies on the transformation matrix M. 
 
-- ####  4.8.4.1 Translation
+- ####  5.8.4.1 Translation
 
 Translation is the movement of the object. If the coordinates of the object translation is obtained, the following transformation matrix can be created.
 
@@ -1041,13 +1041,13 @@ This routine will translate the image to right.The files used are shown in the f
 
 ② Input command "**cd /Desktop**"，and press Enter to enter the shared folder.
 
-```commandline
+```bash
 cd /Desktop
 ```
 
 ③ Input command "**sudo python3 Translation.py**" and press Enter to run the routine. 
 
-```commandline
+```bash
 sudo python3 Translation.py
 ```
 
@@ -1127,7 +1127,7 @@ Move this script to directory "**home\pi\OpenCV_vision\Translation**" for future
 
 <img src="../_static/media/chapter_4/section_8/image30.png"   />
 
-- #### 4.8.4.2 Rotation
+- #### 5.8.4.2 Rotation
 
 Both translation and rotation are the examples of the affine transformation, and employ cv2.warpAffine function to realize affine transformation. But their transformation matrix is different. When rotating the image with function cv2.warpAffine(), obtain the transformation matrix with function cv2.getRotationMatrix2D().   
 
@@ -1171,13 +1171,13 @@ This routine will rotate the image 90 degree counterclockwise.The routine used i
 
 ② Input command "**cd /Desktop**" and press Enter to enter the shared folder.
 
-```commandline
+```bash
 cd /Desktop
 ```
 
 ③ Input the command "**sudo python3 Revolve.py**"and press Enter to run the routine.
 
-```commandline
+```bash
 sudo python3 Revolve.py
 ```
 
@@ -1263,7 +1263,7 @@ Move this script to directory "**home\pi\OpenCV_vision\Revolve**" for future ref
 
 <img src="../_static/media/chapter_4/section_8/image42.png"   />
 
-### 4.8.5 Perspective Transformation
+### 5.8.5 Perspective Transformation
 
 Affine transformation are rotation, translation and scaling in 2D space, while perspective transformation is in 3D space.
 
@@ -1283,7 +1283,7 @@ dst = cv2.warpPerspective( src, M, dsize[, flags[, borderMode[, borderValue]]] )
 
 (5) flags represents the interpolation method which defaults to INTER_LINEAR. When it is **WARP_INVERSE_MAP**, M is an inverse transformation from the target image dst to the original image src. **borderMode**, optional parameter, represents the edge type,BORDER_CONSTANT by default. When it is **BORDER_TRANSPARENT**, the values in the target image do not change, and these values correspond to the outliers in the original image.
 
-- #### 4.8.5.1 Operation Steps
+- #### 5.8.5.1 Operation Steps
 
 This routine will perform perspective transformation.The routine used is shown in the following figure：
 
@@ -1293,7 +1293,7 @@ This routine will perform perspective transformation.The routine used is shown i
 
 （2）Input command "**cd Desktop/**"and press Enter to enter the shared folder.
 
-```commandline
+```bash
 cd Desktop/
 ```
 
@@ -1303,13 +1303,13 @@ cd Desktop/
 sudo python3 Perspective.py
 ```
 
-- #### 4.8.5.2 Program Outcome
+- #### 5.8.5.2 Program Outcome
 
 The final output picture is as follow.
 
 <img src="../_static/media/chapter_4/section_8/image45.png"   />
 
-- #### 4.8.5.3 Program Analysis
+- #### 5.8.5.3 Program Analysis
 
 The routine “**Perspective.py**” can be found in “**[Image Processing---Geometric Transformation->Routine Code->Perspective]()**”.
 
@@ -1378,13 +1378,13 @@ cv2.waitKey() is a keyboard binding function. Its time unit is milliseconds (ms)
 
 cv2.destroyAllWindows() is used to delete the window. If there is no parameter in the bracket, all the windows will be deleted. If you input the specific value of the window, the designated window will be removed.
 
-- #### 4.8.5.4 File Management
+- #### 5.8.5.4 File Management
 
 Move this script to directory "**home\pi\OpenCV_vision\Perspective**" for future reference. Create directory **OpenCV_vision\Perspective** in the home folder if not already existing.
 
 <img src="../_static/media/chapter_4/section_8/image51.png"   />
 
-### 4.8.6 Remap
+### 5.8.6 Remap
 
 Remap is that the pixels are mapped from one picture to the corresponding positions in another image according to the rules to form a new image. 
 
@@ -1422,7 +1422,7 @@ Note: map1 refers to the column where the pixel is located, and map2 refers to t
 
 (8) borderValue refers to border value, 0 by default.
 
-- #### 4.8.6.1 Copy Pixel
+- #### 5.8.6.1 Copy Pixel
 
 **（1）Operation Steps**
 
@@ -1434,13 +1434,13 @@ All pixels in the target image are mapped to the pixels on the 100th row and 200
 
 2. Enter "**cd Desktop/**" and press Enter to navigate to the desktop directory.
 
-```commandline
+```bash
 cd Desktop/
 ```
 
 ③ Input command "**sudo python3 copy.py**" and press Enter to enter the shared folder.
 
-```commandline
+```bash
 sudo python3 copy.py
 ```
 
@@ -1519,7 +1519,7 @@ Create a \_\_pycache\_\_ folder inside the Remap directory to store file "**copy
 
 <img src="../_static/media/chapter_4/section_8/image59.png"   />
 
-- #### 4.8.6.2 Copy the Whole Image
+- #### 5.8.6.2 Copy the Whole Image
 
 **（1）Operation Steps**
 
@@ -1537,13 +1537,13 @@ For how to configure the shared folder, please refer to the file in **“[Linux 
 
 ② Input command "**cd OpenCV_vision/Remap/**"and press Enter to enter the shared folder.
 
-```commandline
+```bash
 cd OpenCV_vision/Remap/
 ```
 
 ③ Input command "**sudo python3 copy_all.py**"and press Enter to enter the shared folder.
 
-```commandline
+```bash
 sudo python3 copy_all.py
 ```
 
@@ -1619,7 +1619,7 @@ cv2.waitKey() is a keyboard binding function. Its time unit is milliseconds (ms)
 
 cv2.destroyAllWindows() is used to delete the window. If there is no parameter in the bracket, all the windows will be deleted. If you input the specific value of the window, the designated window will be removed.
 
-- #### 4.8.6.3 Rotate Around X Axis
+- #### 5.8.6.3 Rotate Around X Axis
 
 If make the image flip around x axis, 
 
@@ -1641,13 +1641,13 @@ With cv2.remap() function, the pixels can be remapped, and also be flipped and t
 
 ① Input the command "**cd OpenCV_vision/Remap/**"and press Enter to enter the shared folder.
 
-```commandline
+```bash
 cd OpenCV_vision/Remap/
 ```
 
 ② Input the command "**sudo python3 x_rotation.py**"and press Enter to enter the shared folder.
 
-```commandline
+```bash
 sudo python3 x_rotation.py
 ```
 
@@ -1725,7 +1725,7 @@ cv2.waitKey() is a keyboard binding function. Its time unit is milliseconds (ms)
 
 cv2.destroyAllWindows() is used to delete the window. If there is no parameter in the bracket, all the windows will be deleted. If you input the specific value of the window, the designated window will be removed.
 
-- #### 4.8.6.4 Rotate Around Y Axis
+- #### 5.8.6.4 Rotate Around Y Axis
 
 If make the image flip around y axis, 
 
@@ -1747,13 +1747,13 @@ Before operation, please copy the routine “**Remap**” in “ [OpenCV->Lesson
 
 ① Input command "**cd OpenCV_vision/Remap/**" and press enter to enter the Remap folder.
 
-```commandline
+```bash
 cd OpenCV_vision/Remap/
 ```
 
 ② Input command "**sudo python3 y_rotation.py**" and press Enter to run the routine.
 
-```commandline
+```bash
 sudo python3 y_rotation.py
 ```
 
@@ -1829,7 +1829,7 @@ cv2.waitKey() is a keyboard binding function. Its time unit is milliseconds (ms)
 
 cv2.destroyAllWindows() is used to delete the window. If there is no parameter in the bracket, all the windows will be deleted. If you input the specific value of the window, the designated window will be removed.
 
-- #### 4.8.6.5 Rotate Around XY Axis
+- #### 5.8.6.5 Rotate Around XY Axis
 
 If make the image rotate around x axis and y axis,
 
@@ -1855,13 +1855,13 @@ the input command should be case sensitive and the keywords can be complemented 
 
 ② Input command "**cd OpenCV_vision/Remap/**" and press Enter to enter the shared folder.
 
-```commandline
+```bash
 cd OpenCV_vision/Remap/
 ```
 
 ③ Input command "**sudo python3 xy_rotation.py**" and press Enter to run the routine.
 
-```commandline
+```bash
 sudo python3 xy_rotation.py
 ```
 
@@ -1937,7 +1937,7 @@ cv2.waitKey() is a keyboard binding function. Its time unit is milliseconds (ms)
 
 cv2.destroyAllWindows() is used to delete the window. If there is no parameter in the bracket, all the windows will be deleted. If you input the specific value of the window, the designated window will be removed.
 
-- #### 4.8.6.6 Compress Image
+- #### 5.8.6.6 Compress Image
 
 Compressing image is to compress the original image by half.
 
@@ -1953,13 +1953,13 @@ Before operation, please copy the routine “**Scale**” in “**[OpenCV->8.Ima
 
 ② Input command "**cd OpenCV_vision/Remap/**"and press Enter to enter the shared folder.
 
-```commandline
+```bash
 cd OpenCV_vision/Remap/
 ```
 
 ③ Input command "**sudo python3 half_size.py**"and press Enter to run the code.
 
-```commandline
+```bash
 sudo python3 half_size.py
 ```
 
@@ -2034,13 +2034,13 @@ cv2.waitKey() is a keyboard binding function. Its time unit is milliseconds (ms)
 cv2.destroyAllWindows() is used to delete the window. If there is no parameter in the bracket, all the windows will be deleted. If you input the specific value of the window, the designated window will be removed.
 
 
-## 4.9 Image Processing - Smoothing
+## 5.9 Image Processing - Smoothing
 
-### 4.9.1 Image Noise
+### 5.9.1 Image Noise
 
 During collecting, processing and transferring, the digital image will be disturbed by different noises, which leads to low-quality image, obscure image and disappeared image feature. And image smoothing is to improve the image by removing noise, and salt-and-pepper noise as well as Gauss noise are common.
 
-- #### 4.9.1.1 Salt-and-pepper Noise
+- #### 5.9.1.1 Salt-and-pepper Noise
 
 Salt-and-pepper noise is also known as pulse noise which is white dots and black dots appearing randomly, like there are black pixels in bright area and white pixels in dark area.
 
@@ -2048,7 +2048,7 @@ At left is the original picture and the right is the picture with salt-and-peppe
 
 <img src="../_static/media/chapter_4/section_9/image1.jpeg"  />
 
-- #### 4.9.1.2 Gauss Noise
+- #### 5.9.1.2 Gauss Noise
 
 Gauss noise is a term from signal processing theory denoting a kind of signal noise that has a probability density function (pdf) equal to that of the normal distribution (which is also known as the Gaussian distribution). Commonly, it can be suppressed by mathematical statistics.
 
@@ -2056,13 +2056,13 @@ At left is the original picture and the right is the picture with Gauss noise.
 
 <img src="../_static/media/chapter_4/section_9/image2.jpeg"  />
 
-### 4.9.2 Image Smoothing
+### 5.9.2 Image Smoothing
 
 From the perspective of signal, image smoothing is to filter the high frequency part of the signal and reserve the low frequency part.
 
 Based on filter, filtering can be divided into mean filtering, Gaussian filtering and median filtering.
 
-- #### 4.9.2.1 Mean Filtering
+- #### 5.9.2.1 Mean Filtering
 
 The idea of mean filtering is simply to take the mean of all the pixels of the image that is assign the mean of all the pixels in the unit of a square to the center pixel.
 
@@ -2076,7 +2076,7 @@ Replace the original center pixel value by “122” as the picture (b) shown.
 
 The algorithm of the mean filtering is simple and its calculation speed is fast. However, the details of the image are destroyed during removing noise resulting in low definition.
 
-- #### 4.9.2.2 Gauss Filtering
+- #### 5.9.2.2 Gauss Filtering
 
 The weighted mean is calculated by multiplying each value by the corresponding weight, adding the sum, and then dividing the sum by the number of the values.
 
@@ -2090,7 +2090,7 @@ Replace the original center pixel value by “122” as the picture (c) shown.
 
 <img src="../_static/media/chapter_4/section_9/image4.png"  />
 
-- #### 4.9.2.3 Median Filtering
+- #### 5.9.2.3 Median Filtering
 
 The median is the middle value when a data set is ordered from least to greatest.
 Median filtering is to take the median of all the pixels of the image that is assign the median in the unit of square to the center pixel. 
@@ -2101,7 +2101,7 @@ Replace the original center pixel value by “107” as the picture (b) shown.
 
 <img src="../_static/media/chapter_4/section_9/image5.png"  />
 
-### 4.9.3 **Operation Steps**
+### 5.9.3 **Operation Steps**
 
 This routine will execute mean filtering, Gauss filtering and median filtering separately.
 
@@ -2133,13 +2133,13 @@ the input command should be case sensitive and the keywords can be complemented 
 
 （7）Input command "**cd Desktop/**" and press Enter to enter the shared folder.
 
-```commandline
+```bash
 cd Desktop/
 ```
 
 （8）Input command "**python3 filtering.py**"and press Enter to run the routine.
 
-```commandline
+```bash
 python3 filtering.py
 ```
 
@@ -2149,19 +2149,19 @@ python3 filtering.py
 
 10. Enter "**sudo apt update**" and press Enter to update software repositories.
 
-```commandline
+```bash
 sudo apt update
 ```
 
 11. Enter "**sudo apt-get install python3-matplotlib**" and press Enter to install.
 
-```commandline
+```bash
 sudo qpt-get install python3-matplotlib
 ```
 
 12. Repeat Step 8 to run the routine.
 
-### 4.9.4 Program Outcome
+### 5.9.4 Program Outcome
 
 The final output image is as follow.
 
@@ -2175,11 +2175,11 @@ The final output image is as follow.
 
 4. Median Filtering: Processed output image using median filtering
 
-### 4.9.5 Program Analysis
+### 5.9.5 Program Analysis
 
 The routine “**filtering.py**” can be found in “[9.Image Processing --- Smoothing->Routine Code]()”.
 
-```commandline
+```bash
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
@@ -2206,13 +2206,13 @@ plt.xticks([]), plt.yticks([])
 plt.show()
 ```
 
-- #### 4.9.5.1 Image Processing
+- #### 5.9.5.1 Image Processing
 
 **（1）Import Module **
 
 Firstly, import the required module through import statement.
 
-```commandline
+```bash
 import cv2
 import numpy as np
 import matplotlib.pyplot as plt
@@ -2222,7 +2222,7 @@ import matplotlib.pyplot as plt
 
 Then call **imread()** function in cv2 module to read the image that needs to be filtered.
 
-```commandline
+```bash
 img = cv2.imread('noise.jpg')
 ```
 
@@ -2286,7 +2286,7 @@ The first parameter “**scr**” is the input image.
 
 The second parameter “**ksize**” is the size of the convolution kernel. 
 
-- #### 4.9.5.2 Image Display
+- #### 5.9.5.2 Image Display
 
 **（1）Create Custom Image** 
 
@@ -2426,7 +2426,7 @@ plt.xticks([]), plt.yticks([])
 plt.show()
 ```
 
-### 4.9.6 File Management
+### 5.9.6 File Management
 
 Move this file to directory "**home\pi\OpenCV_vision\Filtering**" for future reference. Create directory **OpenCV_vision\Filtering** in the home folder if not already existing.
 
@@ -2434,9 +2434,9 @@ Move this file to directory "**home\pi\OpenCV_vision\Filtering**" for future ref
 
 
 
-## 4.10 Image Processing---Edge Detection
+## 5.10 Image Processing---Edge Detection
 
-### 4.10.1 Edge Detection Introduction
+### 5.10.1 Edge Detection Introduction
 
 Edge detection is fundamental technique in image processing and computer vision, which aims at identifying edges in a digital image at which the image brightness changes sharply. Sharp changes in image usually reflect important events and changes in properties. The edge is as the picture shown.
 
@@ -2448,7 +2448,7 @@ Edge detection greatly reduces the amount of data, removes irrelevant informatio
 
 (2) Based on zero-crossing: the boundary is found by searching the second-order derivative zero-crossing of the image, which is usually the Laplacian zero-crossing point or the zero-crossing point represented by the nonlinear difference, and the representative algorithm is the Laplacian operator.
 
-### 4.10.2 Canny Edge Detection
+### 5.10.2 Canny Edge Detection
 
 Canny Edge Detection is a popular edge detection algorithm. It was developed by John F. Canny in 1986 and considered as the best algorithm of edge detection. Canny edge detection will go through 4 steps, including Noise Reduction, Finding Gradient Magnitude and Direction of the Image, Non-maximum Suppression and Hysteresis Thresholding.
 
@@ -2482,7 +2482,7 @@ Canny edge detection algorithm perform non-maximum suppression along the gradien
 
 This stage decides which are really edges. For this, we need two threshold values, “**minVal**” and “**maxVal**”. Any edges with intensity gradient more than maxVal are sure to be edges and those below minVal are sure to be non-edges. Those who lie between these two thresholds are classified edges or non-edges based on their connectivity. If they are connected to "sure-edge" pixels, they are considered to be part of edges. Otherwise, they are also discarded.
 
-### 4.10.3 Operation Steps
+### 5.10.3 Operation Steps
 
 This routine will perform the edge detection.
 
@@ -2516,17 +2516,17 @@ the input command should be case sensitive and the keywords can be complemented 
 
 7. Enter "**cd Desktop/**" and press Enter to navigate to the Desktop directory.
 
-```commandline
+```bash
 cd Desktop/
 ```
 
 8. Enter "**sudo python3 edge_detection.py**" and press Enter to run the routine.
 
-```commandline
+```bash
 sudo python3 edge_detection.py
 ```
 
-### 4.10.4 Program Outcome
+### 5.10.4 Program Outcome
 
 The final output image is as follow.
 
@@ -2534,7 +2534,7 @@ The final output image is as follow.
 
 "**Original**" represents the raw input image and "**Edge Detection**" represents the edge detection result image.
 
-### 4.10.5 Program Analysis
+### 5.10.5 Program Analysis
 
 The routine “**edge_detection.py**” can be found in “**[OpenCV Computer Vision Lesson->8.Image Processing---Edge Detection->Routine Code]()**”.
 
@@ -2561,7 +2561,7 @@ plt.xticks([]), plt.yticks([])
 plt.show()
 ```
 
-- #### 4.10.5.1 Image Processing
+- #### 5.10.5.1 Image Processing
 
 **（1）Import Module**
 
@@ -2612,7 +2612,7 @@ The second parameter “**threshold1**” is the low threshold “**minVal**”
 
 The third parameter “**threshold2**” is high threshold “**maxVal**”.
 
-- #### 4.10.5.2 Image Display
+- #### 5.10.5.2 Image Display
 
 **（1）Create Custom Figure** 
 
@@ -2748,23 +2748,23 @@ plt.xticks([]), plt.yticks([])
 plt.show()
 ```
 
-### 4.10.6 File Management
+### 5.10.6 File Management
 
 Move this file to directory "**home\pi\OpenCV_vision\Edge_detection**" for future reference. Create directory **OpenCV_vision\Edge_detection** in the home folder if not already existing.
 
 <img src="../_static/media/chapter_4/section_10/image21.png"   />
 
-## 4.11 Image Processing --- Morphological Processing
+## 5.11 Image Processing --- Morphological Processing
 
-### 4.11.1 Morphology Introduction
+### 5.11.1 Morphology Introduction
 
 Morphology is one of the most widely used techniques in image processing. It is mainly used to extract image components that are meaningful for describing the shape of an area, so that the most essential shape features of the target object can captured in subsequent recognition, such as boundaries and connected areas. In addition, techniques such as thinning, pixelation, and burr trimming are often used in image preprocessing and postprocessing, which can greatly strengthen the image.
 
 The basic idea of morphology is to use a special structural element to measure or extract the corresponding shape or feature in the input image for further image analysis and target recognition.
 
-### 4.11.2 Morphological Transformation
+### 5.11.2 Morphological Transformation
 
-- #### 4.11.2.1 Erosion and Dilation
+- #### 5.11.2.1 Erosion and Dilation
 
 Both erosion and dilation are the basic and important morphological operation, and also the foundations of multiple advanced morphological processing. Many morphological algorithms are composed of these two.
 
@@ -2804,7 +2804,7 @@ Dilation can enlarge the edge of the image and pad the edge of the target object
 
 <img src="../_static/media/chapter_4/section_11/image4.png"  />
 
-- #### 4.11.2.2 Opening and Closing
+- #### 5.11.2.2 Opening and Closing
 
 In opening and closing, erosion and dilation are executed in sequence.
 
@@ -2816,7 +2816,7 @@ Opening indicates that erosion is executed first and dilation follows. It is use
 
 In closing, dilation is executed first and erosion follows. It plays an important role in eliminating holes, that is, filling closed areas and deleting dark areas under a bright background.
 
-- #### 4.11.2.3 Top Hat and Bottom Hat
+- #### 5.11.2.3 Top Hat and Bottom Hat
 
 **（1）Top Hat Operation**
 
@@ -2826,7 +2826,7 @@ It is the difference between input image and the image after opening (Top hat op
 
 It is the difference between input image and the image after closing (Top hat operation= input image - image after closing), and it can obtain areas with darker gray in the original image
 
-### 4.11.3 Operation Steps
+### 5.11.3 Operation Steps
 
 This routine will perform erosion, dilation, opening, closing, top hat operation and bottom hat operation on the designated image.
 
@@ -2842,17 +2842,17 @@ the input command should be case sensitive and the keywords can be complemented 
 
 (2) Input command "**cd /mnt/hgfs/Share/**"1） and press Enter to enter the shared folder.
 
-```commandline
+```bash
 cd /mnt/hgfs/Share/
 ```
 
 (3) Input command "**python3 morphology operations.py**" and press Enter to run the routine.
 
-```commandline
+```bash
 python3 morphology operations.py
 ```
 
-### 4.11.4 Program Outcome
+### 5.11.4 Program Outcome
 
 The final output image is as follow.
 
@@ -2876,7 +2876,7 @@ The final output image is as follow.
 
 9. BlackHat: Output image after black hat transformation
 
-### 4.11.5 Program Analysis
+### 5.11.5 Program Analysis
 
 The routine “**morphology_operations.py**” can be found in “[OpenCV Computer Vision Lesson->11.Image Processing---Morphological Processing->Routine Code]()”.
 
@@ -2931,7 +2931,7 @@ plt.show()
 
 ```
 
-- #### 4.11.5.1 Image Processing
+- #### 5.11.5.1 Image Processing
 
 **（1）Import Module** 
 
@@ -3029,7 +3029,7 @@ The second parameter “**op**”represents the operation type.
 
 The third parameter indicates the size of the frame.
 
-- #### 4.11.5.2 Image Display
+- #### 5.11.5.2 Image Display
 
 **（1）Create Custom Figure**
 
@@ -3178,9 +3178,9 @@ plt.xticks([]), plt.yticks([])
 plt.show()
 ```
 
-## 4.12 Image Processing --- Thresholding
+## 5.12 Image Processing --- Thresholding
 
-### 4.12.1 Image Binaryzation
+### 5.12.1 Image Binaryzation
 
 Image binaryzation is to set the gray values of image pixels as two values, 0 (represent black) and 255 (represent white) generally, which will make the image turn black-and-white. 
 
@@ -3190,11 +3190,11 @@ Image binaryzation facilitates the further processing of the image, makes the im
 
 Under different situation, there are three ways to execute thresholding, including Global Thresholding, Adaptive Thresholding and Otsu Thresholding
 
-### 4.12.2 Global Thresholding
+### 5.12.2 Global Thresholding
 
 Global thresholding will process the whole image according to the set threshold.
 
-- #### 4.12.2.1 Operation Steps
+- #### 5.12.2.1 Operation Steps
 
 :::{Note}
 - Before operation, please copy the routine “threshold_demo.py” and sample picture “test.jpg” in “4.OpenCV->Lesson 12 Image Processing --- Thresholding->Routine Code ”to the shared folder
@@ -3206,23 +3206,23 @@ Global thresholding will process the whole image according to the set threshold.
 
 （2）Input command"**cd /mnt/hgfs/share/**" and press Enter to enter the shared folder.
 
-```commandline
+```bash
 cd /mnt/hgfs/share/
 ```
 
 （3）Input command "**python3 threshold_demo.py**" and press Enter to run the routine.
 
-```commandline
+```bash
 python3 threshold_demo.py
 ```
 
-- #### 4.12.2.2 Program Outcome
+- #### 5.12.2.2 Program Outcome
 
 <img src="../_static/media/chapter_4/section_12/image5.png"  /><img src="../_static/media/chapter_4/section_12/image6.png"  />
 
 The final output picture is as shown above.
 
-- #### 4.12.2.3 Code Analysis
+- #### 5.12.2.3 Code Analysis
 
 The routine “**threshold_demo.py**” can be found in “**OpenCV Computer Vision Lesson->12.Image Processing --- Thresholding->Routine Code**”.
 
@@ -3309,11 +3309,11 @@ cv2.destroyAllWindows()
 
 **Close window**：waitKey function will wait until the keyboard is pressed, and then execute destroyAllWindows function to close the window.
 
-### 4.12.3 Adaptive Thresholding
+### 5.12.3 Adaptive Thresholding
 
 Adaptive thresholding is the method where the threshold value is calculated for smaller regions to process the image.
 
-- ##### 4.12.3.1 Operation Steps
+- ##### 5.12.3.1 Operation Steps
 
 :::{Note}
 - Before operation, please copy the routine “adaptiveThreshold_demo.py” and sample picture “test.jpg” in “4.OpenCV->Lesson 12 Image Processing --- Thresholding->Routine Code” to the shared folder.
@@ -3325,17 +3325,17 @@ Adaptive thresholding is the method where the threshold value is calculated for 
 
 （2）Input command "**cd /mnt/hgfs/share/**" and press Enter to enter the shared folder.
 
-```commandline
+```bash
 cd /mnt/hgfs/share/
 ```
 
 （3）Input command "**python3 adaptiveThreshold_demo.py**" and press Enter to run the routine.
 
-```commandline
+```bash
 python3 adaptiveThreshold_demo.py
 ```
 
-- #### 4.12.3.2 Program Outcome
+- #### 5.12.3.2 Program Outcome
 
 <img src="../_static/media/chapter_4/section_12/image5.png"  />
 
@@ -3343,7 +3343,7 @@ python3 adaptiveThreshold_demo.py
 
 The final output image is as above.
 
-- #### 4.12.3.3 Code Analysis
+- #### 5.12.3.3 Code Analysis
 
 For a picture with balanced color, its threshold is usually set as 127.
 
@@ -3403,7 +3403,7 @@ cv2.destroyAllWindows()
 
 **（6）Close window**：waitKey function will wait until the keyboard is pressed, and then execute destroyAllWindows function to close the window.
 
-### 4.12.4 Otsu Thresholding
+### 5.12.4 Otsu Thresholding
 
 Appropriate threshold will be automatically calculated.
 
@@ -3422,13 +3422,13 @@ Appropriate threshold will be automatically calculated.
 
 ② Input command "**cd /mnt/hgfs/share/**" and press Enter to enter the shared folder.
 
-```commandline
+```bash
 cd /mnt/hgfs/share/
 ```
 
 ③ Input command "**python3 Otsu_demo.py**"1） and press Enter to run the routine.
 
-```commandline
+```bash
 python3 Otsu_demo.py
 ```
 
@@ -3462,19 +3462,19 @@ Otsu thresholding is to pass a parameter “***\*cv2.THRESH_OTSU\****” in the 
 
 **In cv2.threshold(img, 0, 255, cv2.THRESH_BINARY+cv2.THRESH_OTSU)**，parameter thresh needs to set as 0, and parameter type should be set as "cv2.THRESH_BINARY+cv2.THRESH_OTSU"
 
-## 4.13 Image Processing---Contour Introduction and Feature
+## 5.13 Image Processing---Contour Introduction and Feature
 
-### 4.13.1 Contour Introduction
+### 5.13.1 Contour Introduction
 
 Contour is defined as the line joining all the points along the boundary of an image that are having the same color or intensity. Contour is useful tool for shape analyzing as well as object detection and recognition.  
 
 For higher accuracy, binaryzation will be performed first. After the binary image is obtained, search the contour that is find the white object under the black background. Therefore, our target is the white object and the background is black.
 
-### 4.13.2 Search and Draw Contour
+### 5.13.2 Search and Draw Contour
 
 After the object is found, search for the contour points and draw the contour.
 
-- #### 4.13.2.1 Operation Steps
+- #### 5.13.2.1 Operation Steps
 
 :::{Note}
 
@@ -3489,23 +3489,23 @@ After the object is found, search for the contour points and draw the contour.
 
 （2）Input command "**cd /mnt/hgfs/share/**" and press Enter to enter the shared folder.
 
-```commandline
+```bash
 cd /mnt/hgfs/share/
 ```
 
 （3）Input command "**python3 contours_demo.py**"1） and press Enter to run the routine.
 
-```commandline
+```bash
 python3 contours_demo.py
 ```
 
-- #### 4.13.2.2 Program Outcome
+- #### 5.13.2.2 Program Outcome
 
 <img src="../_static/media/chapter_4/section_13/image5.png"  />
 
 The final output picture is as above.
 
-- #### 4.13.2.3 Code Analysis
+- #### 5.13.2.3 Code Analysis
 
 The routine “**contours_demo.py**” can be found in “**4.OpenCV->Lesson 13 Image Processing --- Contour Introduction and Feature->Routine Code**”.
 
@@ -3593,7 +3593,7 @@ drawContours(image, contours, contourIdx, color, thickness)
 4) The fourth parameter “**color**” refers to the color of the contour.
 5) The fifth parameter “**thickness**” represents the width of the contour. -1 means that the contour will be padded.
 
-### 4.13.3 Contour Feature Moment
+### 5.13.3 Contour Feature Moment
 
 Feature moment is global feature of a contour and a picture. The moment contains the  geometric features in different types of the corresponding objects. There are three types of moments, including spatial moment, central moment and normalized central moment  
 
@@ -3607,7 +3607,7 @@ It includes two-order central moments: mu20, mu11 and mu02, as well as three-ord
 
 It includes two-order Hu moment: nu20, nu11 and nu02, and three-order Hu moment: nu30, nu21, nu12 and nu03. Following, based on the obtained contour, calculate the feature moment, area and perimeter of the contour.
 
-- #### 4.13.3.1 Operation Steps
+- #### 5.13.3.1 Operation Steps
 
 :::{Note}
 - Before operation, please copy the routine “moments_demo.py” and sample picture “test.jpg” in “4.OpenCV->Lesson 13 Image Processing --- Contour Introduction and Feature->Routine Code” to the shared folder.
@@ -3622,23 +3622,23 @@ It includes two-order Hu moment: nu20, nu11 and nu02, and three-order Hu moment:
 
 （2）Input command "**cd /mnt/hgfs/share/**"1） and press Enter to enter the shared folder.
 
-```commandline
+```bash
 cd /mnt/hgfs/share/
 ```
 
 （3）Input command "**python3 moments_demo.py**" and press Enter to run the routine.
 
-```commandline
+```bash
 python3 moments_demo.py
 ```
 
-- #### 4.13.3.2 Program Outcome
+- #### 5.13.3.2 Program Outcome
 
 <img src="../_static/media/chapter_4/section_13/image11.png"  />
 
 The unit of the area and perimeter is pixel. The outermost contour of the image will be calculated
 
-- #### 4.13.3.3 Code Analysis
+- #### 5.13.3.3 Code Analysis
 
 The routine “**moments_demo.py**” can be found in “**4.OpenCV Computer Vision Lesson->Lesson 13 Image Processing --- Contour Introduction and Feature->Routine Code**”.
 
@@ -3697,7 +3697,7 @@ area=cv2.contourArea(cnt)
 perimeter=cv2.arcLength(cnt,True)
 ```
 
-### 4.13.4 Polygon Approximation
+### 5.13.4 Polygon Approximation
 
 The searched “contours” maybe too complex and not smooth, approxPolyDP function can be adopted to appropriately approximate the polygon curve, which is polygon approximation. 
 
@@ -3705,7 +3705,7 @@ This function uses polygons to approximate the contour, utilizing the Douglas-Pe
 
 Next, analyze the object contour with polygon approximation.
 
-- #### 4.13.4.1 Operation Steps
+- #### 5.13.4.1 Operation Steps
 
 :::{Note}
 
@@ -3721,23 +3721,23 @@ Next, analyze the object contour with polygon approximation.
 
 2. Input command "**cd /mnt/hgfs/share/**" and press Enter to enter the shared folder.
 
-```commandline
+```bash
 cd /mnt/hgfs/share/
 ```
 
 3. Input command "**python3 approx_demo.py**" and press Enter to run the routine.
 
-```commandline
+```bash
 python3 approx_demo.py
 ```
 
-- #### 4.13.4.2 Program Outcome
+- #### 5.13.4.2 Program Outcome
 
 <img src="../_static/media/chapter_4/section_13/image18.png"  />
 
 The contour after polygon approximation will try to fit the figure as much as possible.
 
-- #### 4.13.4.3 Code Analysis
+- #### 5.13.4.3 Code Analysis
 
 The routine “**approx_demo.py**” can be found in “**4. OpenCV Computer Vision Lesson->Lesson 13 Image Processing---Contour Introduction and Feature->Routine Code**”.
 
@@ -3778,13 +3778,13 @@ apporxPolyDP(curve, epsilon, closed)
 approxl=cv2.approxPolyDP(cnt, 20, True)
 ```
 
-### 4.13.5 Contour Convex Hull
+### 5.13.5 Contour Convex Hull
 
 Convex Hull will look similar to contour approximation, but it is the convex polygon in the outermost of the object. Convex hull refers to a polygon that completely contains the original contour and consists only of points on the contour. Every part of the convex hull is convex, that is, the line connecting any two points in the convex hull is inside the convex hull. In the convex hull, the interior angle of any three consecutive points is less than 180°.  
 
 Next, analyze the object contour through contour convex hull.
 
-- #### 4.13.5.1 Operation Steps
+- #### 5.13.5.1 Operation Steps
 
 :::{Note}
 
@@ -3800,23 +3800,23 @@ Next, analyze the object contour through contour convex hull.
 
 （2）Input command "**cd /mnt/hgfs/share/**" and press Enter to enter the shared folder.
 
-```commandline
+```bash
 cd /mnt/hgfs/share/
 ```
 
 （3）Input command "**python3 hull_demo.py**" and press Enter to run the routine.
 
-```commandline
+```bash
 python3 hull_demo.py
 ```
 
-- #### 4.13.5.2 Program Outcome
+- #### 5.13.5.2 Program Outcome
 
 <img src="../_static/media/chapter_4/section_13/image23.png"  />
 
 The convex hull will connect the vertices of the contour.
 
-- #### 4.13.5.3 Code Analysis
+- #### 5.13.5.3 Code Analysis
 
 The routine “**hull_demo.py**” can be found in “**4. OpenCV Computer Vision Lesson->Lesson 13 Image Processing---Contour Introduction and Feature Routine Code**”
 
@@ -3849,7 +3849,7 @@ convexHull(points, clockwise,)
 hull=cv2.convexHull(cnt,True)
 ```
 
-### 4.13.6 Circumscribed Rectangle
+### 5.13.6 Circumscribed Rectangle
 
 The bounding rectangle is divided into the minimum bounding rectangle with rotation angle and the regular circumscribed rectangle.
 
@@ -3859,7 +3859,7 @@ The bounding rectangle is divided into the minimum bounding rectangle with rotat
 
 Next, draw the regular bounding rectangle and minimum bounding rectangle.
 
-- #### 4.13.6.1 Operation Steps
+- #### 5.13.6.1 Operation Steps
 
 :::{Note}
 - Before operation, please copy the routine “rect_demo.py” and sample picture “test.jpg” in “4.OpenCV->Lesson 13 Image Processing --- Contour Introduction and Feature->Routine Code” to the shared folder.
@@ -3872,27 +3872,27 @@ Next, draw the regular bounding rectangle and minimum bounding rectangle.
 
 （2）Input command "**cd /mnt/hgfs/share/**" and press Enter to enter the shared folder.
 
-```commandline
+```bash
 cd /mnt/hgfs/share/
 ```
 
 （3）Input command "**python3 rect_demo.py**" and press Enter to run the routine.
 
-```commandline
+```bash
 python3 rect_demo.py
 ```
 
-- #### 4.13.6.2 Program Outcome
+- #### 5.13.6.2 Program Outcome
 
 <img src="../_static/media/chapter_4/section_13/image27.png"  />
 
 The green one is the regular bounding rectangle, and the blue one is the minimum bounding rectangle.
 
-* **4.13.6.3 Code Analysis** 
+* **5.13.6.3 Code Analysis** 
 
 The routine “**rect_demo.py**” can be found in “[OpenCV Computer Vision Lesson->13. Image Processing---Contour Introduction and Feature Routine Code]( ) ”
 
-```commandline
+```bash
 import cv2
 import numpy as np
 img=cv2.imread('test.jpg')
@@ -3963,9 +3963,9 @@ The fifth parameter “**thickness**” represents the width of the drawn rectan
 img4 = cv2.rectangle(img,(x,y),(x+w,y+h),(0,255,0),3)
 ```
 
-## 4.14 Image Processing---Feature Matching
+## 5.14 Image Processing---Feature Matching
 
-### 4.14.1 Brute-Force Matching
+### 5.14.1 Brute-Force Matching
 
 The feature descriptor is to describe the key point with a set of vectors after the key point is calculated. It includes not only the key point, but also the pixels around the key point that has made a contribution. It serves as the basis for target matching, and enables the key points to have more invariant characteristics, such as illumination changes, 3D viewpoint changes, etc.
 
@@ -3973,7 +3973,7 @@ Each feature descriptor in one set of features is matched with the nearest featu
 
 Next, use brute force matching to match the features of the two images.
 
-- #### 4.14.1.1 Operation Steps
+- #### 5.14.1.1 Operation Steps
 
 :::{Note}
 
@@ -3989,23 +3989,23 @@ Next, use brute force matching to match the features of the two images.
 
 （2）Input command "**cd /mnt/hgfs/share/**" and press Enter to enter the shared folder.
 
-```commandline
+```bash
 cd /mnt/hgfs/share/
 ```
 
 （3）Input command "**python3 bf_demo.py**" and press Enter to run the routine.
 
-```commandline
+```bash
 python3 bf_demo.py
 ```
 
-- #### 4.14.1.2 Program Outcome
+- #### 5.14.1.2 Program Outcome
 
 <img src="../_static/media/chapter_4/section_14/image5.png"  />
 
 Take out one part of the original image, and then match features between these two images.
 
-- #### 4.14.1.2 Code Analysis
+- #### 5.14.1.2 Code Analysis
 
 The routine “**bf_demo.py**” can be found in “**[OpenCV->14.Image Processing --- Feature Matching->Routine Code]()**”.
 
@@ -4132,7 +4132,7 @@ cv2.waitKey()
 cv2.destroyAllWindows()
 ```
 
-### 4.14.2 Nearest Neighbor Matching
+### 5.14.2 Nearest Neighbor Matching
 
 FLANN (Fast Library for Approximate Nearest Neighbors) is a FLANN is a open-source library for performing fast approximate nearest neighbor searches in high dimensional spaces.
 
@@ -4140,7 +4140,7 @@ The nearest neighbor matching operator FlannBasedMatcher based on the FLANN libr
 
 Next, adopt nearest neighbor matching to match the features of the two images.
 
-- #### 4.14.2.1 Operation Steps
+- #### 5.14.2.1 Operation Steps
 
 :::{Note}
 
@@ -4155,21 +4155,21 @@ Next, adopt nearest neighbor matching to match the features of the two images.
 
 (2) Input command "**cd /mnt/hgfs/share/**" and press Enter to enter the shared folder.
 
-```commandline
+```bash
 cd /mnt/hgfs/share/
 ```
 
 (3) Input command "**python3 flann_demo.py**" and press Enter to run the routine.
 
-```commandline
+```bash
 python3 flann_demo.py
 ```
 
-- #### 4.14.2.2 Program Outcome
+- #### 5.14.2.2 Program Outcome
 
 <img src="../_static/media/chapter_4/section_14/image16.png"  />
 
-- #### 4.14.2.3 Code Analysis
+- #### 5.14.2.3 Code Analysis
 
 The routine “**flann_demo.py**” can be found in “[OpenCV Computer Vision Lesson->14.Image Processing---Feature Matching->Routine Code]()”.
 
@@ -4229,15 +4229,15 @@ knnMathch(**queryDescriptors,trainDescriptors,k**)，The first two parameters ar
 matches = flann.knnMatch(des1,des2,k=2)
 ```
 
-## 4.15 Image Processing---Corner Detection
+## 5.15 Image Processing---Corner Detection
 
-### 4.15.1 **1.** Corner Introduction
+### 5.15.1 **1.** Corner Introduction
 
-- #### 4.15.1.1 Corner Definition
+- #### 5.15.1.1 Corner Definition
 
 The corner is defined as the intersection of two edges, or a feature with two main directions in the neighborhood. In general, corner is the point on the edge curve with maximum curvature, or the point with large variation in intensity in the image.
 
-- #### 4.15.1.2 Detection Idea
+- #### 5.15.1.2 Detection Idea
 
 Define a tiny local window in the image, then move this window in all directions, which will leads to three results, including flat areas, edges and corners.
 
@@ -4273,7 +4273,7 @@ When R<0, which happens when λ1>>λ2 or vice versa, the region is edge.
 
 When R is large, which happens when λ1 and λ2 are large and λ1∼λ2, the region is a corner.
 
-### 4.15.2 Operation Steps
+### 5.15.2 Operation Steps
 
 Next, detect the corners of the image through Harris corner detection.
 
@@ -4290,21 +4290,21 @@ Next, detect the corners of the image through Harris corner detection.
 
 (2) Input command "**cd /mnt/hgfs/share/**" and press Enter to enter the shared folder.
 
-```commandline
+```bash
 cd /mnt/hgfs/share/
 ```
 
 (3) Input command "**python3 corners_demo.py**" and press Enter to run the routine.
 
-```commandline
+```bash
 python3 corners_demo.py
 ```
 
-### 4.15.3 Program Outcome
+### 5.15.3 Program Outcome
 
 <img src="../_static/media/chapter_4/section_15/image9.png"  />
 
-### 4.15.4 Code Analysis
+### 5.15.4 Code Analysis
 
 The routine “**corners_demo.py**” can be found in “**[OpenCV->15.Image Processing --- Corner Detection->Routine Code]()**”
 

@@ -132,6 +132,76 @@ function trimWhitespaceInsideStrong(code: string) {
     .join('\n')
 }
 
+function convertNoteContainersToGitHubAlerts(code: string) {
+  const lines = code.split('\n')
+  const normalizedLines: string[] = []
+  let inFence = false
+  let activeFenceMarker = ''
+  let changed = false
+
+  for (let index = 0; index < lines.length; index += 1) {
+    const line = lines[index]
+    const trimmed = line.trimStart()
+    const fenceMatch = trimmed.match(fencePattern)
+
+    if (fenceMatch) {
+      const marker = fenceMatch[1]
+      if (!inFence) {
+        inFence = true
+        activeFenceMarker = marker
+      } else if (marker[0] === activeFenceMarker[0] && marker.length >= activeFenceMarker.length) {
+        inFence = false
+        activeFenceMarker = ''
+      }
+      normalizedLines.push(line)
+      continue
+    }
+
+    if (inFence || !/^\s*:::\{[Nn]ote\}\s*$/.test(line)) {
+      normalizedLines.push(line)
+      continue
+    }
+
+    const bodyLines: string[] = []
+    let closeLine = index + 1
+
+    while (closeLine < lines.length && !/^\s*:::\s*$/.test(lines[closeLine])) {
+      bodyLines.push(lines[closeLine])
+      closeLine += 1
+    }
+
+    if (closeLine >= lines.length) {
+      normalizedLines.push(line)
+      continue
+    }
+
+    normalizedLines.push('> [!NOTE]')
+    for (const bodyLine of bodyLines) {
+      normalizedLines.push(bodyLine.length > 0 ? `> ${bodyLine}` : '>')
+    }
+
+    index = closeLine
+    changed = true
+  }
+
+  return changed ? normalizedLines.join('\n') : code
+}
+
+function normalizeNoteContainers() {
+  return {
+    name: 'normalize-note-containers',
+    enforce: 'pre' as const,
+    transform(code: string, id: string) {
+      if (!id.endsWith('.md') || !/:::\{[Nn]ote\}/.test(code)) {
+        return null
+      }
+
+      const transformed = convertNoteContainersToGitHubAlerts(code)
+      return transformed === code ? null : transformed
+    }
+  }
+}
+
 
 function preserveBrokenAbsoluteImages() {
   const imageTagPattern = /<img\b[^>]*\bsrc="([A-Za-z]:\\[^"]+)"[^>]*\/?>/g
@@ -639,7 +709,7 @@ function docModuleBlockPlugin(md: any) {
 export default defineConfig({
   base: docsBase,
   title: 'JetHexa Documentation',
-  description: 'JetHexa robot documentation',
+  description: 'JetHexa documentation',
   head: [['link', { rel: 'icon', href: `${docsBase}favicon.ico` }]],
   ignoreDeadLinks: true,
   transformHtml(code) {
@@ -648,6 +718,7 @@ export default defineConfig({
   vite: {
     assetsInclude: ['**/*.PNG', '**/*.JPG', '**/*.JPEG', '**/*.WEBP', '**/*.BMP', '**/*.ICO', '**/*.SVG', '**/*.MP4', '**/*.MOV', '**/*.AVI', '**/*.WAV', '**/*.MP3', '**/*.emf', '**/*.EMF', '**/*.wmf', '**/*.WMF', '**/*.GIF', '**/*.db'],
     plugins: [
+      normalizeNoteContainers(),
       normalizeStrongWhitespace(),
       normalizeProblematicStrongEmphasis(),
       preserveBrokenAbsoluteImages(),
