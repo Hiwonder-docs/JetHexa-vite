@@ -19,11 +19,30 @@ const VERSION_LABELS: Record<string, string> = {
 }
 
 function detectCurrentVersion(): string {
-  if (!inBrowser) return ALL_VERSIONS[0]
+  const pathname = inBrowser ? location.pathname : withBase('/')
   for (const version of ALL_VERSIONS) {
-    if (location.pathname.includes(`/en/${version}/`)) return version
+    if (pathname.includes(`/en/${version}/`)) return version
   }
   return ALL_VERSIONS[0]
+}
+
+const currentVersion = computed(() => {
+  void route.path
+  return detectCurrentVersion()
+})
+
+function navigateToVersion(targetVersion: string) {
+  if (!inBrowser) return
+  const current = detectCurrentVersion()
+  if (targetVersion === current) return
+
+  const versionRootPattern = new RegExp(`/en/${current}(?:/.*)?$`)
+  const targetPath = location.pathname.replace(versionRootPattern, `/en/${targetVersion}/`)
+  window.location.replace(`${targetPath}${location.search}${location.hash}`)
+}
+
+function handleMobileVersionChange(event: Event) {
+  navigateToVersion((event.target as HTMLSelectElement).value)
 }
 
 function injectVersionSwitcher() {
@@ -74,11 +93,7 @@ function injectVersionSwitcher() {
       event.stopPropagation()
       const targetVersion = (item as HTMLElement).dataset.version!
 
-      if (targetVersion !== current) {
-        const versionRootPattern = new RegExp(`/en/${current}(?:/.*)?$`)
-        const targetPath = location.pathname.replace(versionRootPattern, `/en/${targetVersion}/`)
-        window.location.replace(targetPath)
-      }
+      navigateToVersion(targetVersion)
 
       closeMenu()
     })
@@ -1106,7 +1121,24 @@ onBeforeUnmount(() => {
 
 <template>
   <PageRedirect v-if="isRedirectPage" />
-  <component :is="DefaultTheme.Layout" v-else />
+  <component :is="DefaultTheme.Layout" v-else>
+    <template #nav-screen-content-before>
+      <div class="mobile-version-switcher">
+        <label class="mobile-version-switcher__label" for="mobile-version-select">Version</label>
+        <select
+          id="mobile-version-select"
+          class="mobile-version-switcher__select"
+          :value="currentVersion"
+          aria-label="Documentation version"
+          @change="handleMobileVersionChange"
+        >
+          <option v-for="version in ALL_VERSIONS" :key="version" :value="version">
+            {{ VERSION_LABELS[version] }}
+          </option>
+        </select>
+      </div>
+    </template>
+  </component>
   <slot name="layout-bottom" />
   <ImageViewer
     v-if="lightboxSrc"
