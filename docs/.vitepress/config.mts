@@ -12,7 +12,7 @@ const fencePattern = /^\s*(```+|~~~+)/
 const lazyImagePlaceholder =
   'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2216%22 height=%229%22 viewBox=%220 0 16 9%22%3E%3C/svg%3E'
 const imageDimensionCache = new Map<string, { width: number; height: number } | null>()
-const docsBase = normalizeBase(process.env.DOCS_BASE || '/projects/JetHexa/en/latest/')
+const docsBase = normalizeBase(process.env.DOCS_BASE || '/projects/JetHexa/en/24JetsonNano/')
 
 function normalizeBase(value: string) {
   return `/${value.replace(/^\/+|\/+$/g, '')}/`
