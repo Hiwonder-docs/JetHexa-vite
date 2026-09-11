@@ -9,9 +9,9 @@ import FeedbackWidget from './FeedbackWidget.vue'
 const { frontmatter } = useData()
 const route = useRoute()
 
-const ALL_VERSIONS = ['24JetsonNano', 'JetsonOrinNX', 'JetsonNano', 'RaspberryPi', 'JetsonOrinNano']
+const ALL_VERSIONS = ['JetsonNanoRos1', 'JetsonOrinNX', 'JetsonNano', 'RaspberryPi', 'JetsonOrinNano']
 const VERSION_LABELS: Record<string, string> = {
-  '24JetsonNano': '24-Jetson Nano',
+  JetsonNanoRos1: 'Jetson Nano-ROS1',
   JetsonOrinNX: 'Jetson Orin NX',
   JetsonNano: 'Jetson Nano',
   RaspberryPi: 'Raspberry Pi',

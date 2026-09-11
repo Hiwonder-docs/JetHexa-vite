@@ -4,8 +4,8 @@ import { dirname, join } from 'path'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const repositoryRoot = join(__dirname, '..')
-const validVersions = ['24JetsonNano', 'JetsonOrinNX', 'JetsonNano', 'RaspberryPi', 'JetsonOrinNano']
-const version = process.argv[2] || '24JetsonNano'
+const validVersions = ['JetsonNanoRos1', 'JetsonOrinNX', 'JetsonNano', 'RaspberryPi', 'JetsonOrinNano']
+const version = process.argv[2] || 'JetsonNanoRos1'
 
 if (!validVersions.includes(version)) {
   console.error(`Invalid version: ${version}`)
