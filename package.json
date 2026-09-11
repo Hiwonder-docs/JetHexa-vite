@@ -7,21 +7,21 @@
     "dev:jetson-orin-nx": "node scripts/dev_version.mjs JetsonOrinNX",
     "dev:jetson-nano": "node scripts/dev_version.mjs JetsonNano",
     "dev:raspberry-pi": "node scripts/dev_version.mjs RaspberryPi",
-    "dev:jetson-orin-nano": "node scripts/dev_version.mjs JetsonOrinNano",
+    "dev:jetson-orin-nano": "node scripts/dev_version.mjs latest",
     "docs:build": "vitepress build docs",
     "docs:preview": "node scripts/preview_version.mjs JetsonNanoRos1",
     "preview:jetson-nano-ros1": "node scripts/preview_version.mjs JetsonNanoRos1",
     "preview:jetson-orin-nx": "node scripts/preview_version.mjs JetsonOrinNX",
     "preview:jetson-nano": "node scripts/preview_version.mjs JetsonNano",
     "preview:raspberry-pi": "node scripts/preview_version.mjs RaspberryPi",
-    "preview:jetson-orin-nano": "node scripts/preview_version.mjs JetsonOrinNano",
+    "preview:jetson-orin-nano": "node scripts/preview_version.mjs latest",
     "docs:stage-main": "node scripts/stage_main_site.mjs",
     "build:jetson-nano-ros1": "node scripts/build_version.mjs JetsonNanoRos1",
     "build:jetson-orin-nx": "node scripts/build_version.mjs JetsonOrinNX",
     "build:jetson-nano": "node scripts/build_version.mjs JetsonNano",
     "build:raspberry-pi": "node scripts/build_version.mjs RaspberryPi",
-    "build:jetson-orin-nano": "node scripts/build_version.mjs JetsonOrinNano",
-    "build:all": "node scripts/build_version.mjs JetsonOrinNX && node scripts/build_version.mjs JetsonNano && node scripts/build_version.mjs RaspberryPi && node scripts/build_version.mjs JetsonOrinNano && node scripts/build_version.mjs JetsonNanoRos1"
+    "build:jetson-orin-nano": "node scripts/build_version.mjs latest",
+    "build:all": "node scripts/build_version.mjs latest && node scripts/build_version.mjs JetsonOrinNX && node scripts/build_version.mjs JetsonNano && node scripts/build_version.mjs RaspberryPi && node scripts/build_version.mjs JetsonNanoRos1"
   },
   "dependencies": {
     "vitepress": "^1.6.4"
