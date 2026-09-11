@@ -1,6 +1,6 @@
-﻿---
+---
 layout: page-redirect
-redirectTo: /docs/1_Basic_Lesson.html
+redirectTo: /docs/index.html
 ---
 
 Redirecting to content page...

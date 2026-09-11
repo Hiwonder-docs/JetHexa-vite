@@ -1,9 +1,18 @@
 {
+  "name": "jethexa-vite",
+  "private": true,
   "scripts": {
-    "docs:dev": "vitepress dev docs",
+    "docs:dev": "node scripts/dev_version.mjs latest",
+    "dev:latest": "node scripts/dev_version.mjs latest",
+    "dev:jetson-orin-nano": "node scripts/dev_version.mjs JetsonOrinNano",
     "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs",
-    "docs:stage-main": "node scripts/stage_main_site.mjs"
+    "docs:preview": "node scripts/preview_version.mjs latest",
+    "preview:latest": "node scripts/preview_version.mjs latest",
+    "preview:jetson-orin-nano": "node scripts/preview_version.mjs JetsonOrinNano",
+    "docs:stage-main": "node scripts/stage_main_site.mjs",
+    "build:latest": "node scripts/build_version.mjs latest",
+    "build:jetson-orin-nano": "node scripts/build_version.mjs JetsonOrinNano",
+    "build:all": "node scripts/build_version.mjs JetsonOrinNano && node scripts/build_version.mjs latest"
   },
   "dependencies": {
     "vitepress": "^1.6.4"

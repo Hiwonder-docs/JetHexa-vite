@@ -4,9 +4,85 @@ import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import { inBrowser, useData, useRoute, withBase } from 'vitepress'
 import PageRedirect from './PageRedirect.vue'
 import ImageViewer from './ImageViewer.vue'
+import FeedbackWidget from './FeedbackWidget.vue'
 
 const { frontmatter } = useData()
 const route = useRoute()
+
+const ALL_VERSIONS = ['latest', 'JetsonOrinNano']
+const VERSION_LABELS: Record<string, string> = {
+  latest: 'JetHexa',
+  JetsonOrinNano: 'Jetson Orin Nano'
+}
+
+function detectCurrentVersion(): string {
+  if (!inBrowser) return ALL_VERSIONS[0]
+  for (const version of ALL_VERSIONS) {
+    if (location.pathname.includes(`/en/${version}/`)) return version
+  }
+  return ALL_VERSIONS[0]
+}
+
+function injectVersionSwitcher() {
+  if (!inBrowser) return
+  const navList = document.querySelector('.VPNavBarMenu')
+  if (!navList || navList.querySelector('.version-switcher')) return
+
+  const current = detectCurrentVersion()
+  const switcher = document.createElement('div')
+  switcher.className = 'version-switcher'
+  const itemsHtml = ALL_VERSIONS
+    .map(
+      (version) =>
+        `<li class="version-switcher__item ${current === version ? 'is-selected' : ''}" data-version="${version}" role="menuitem">${VERSION_LABELS[version]}</li>`
+    )
+    .join('')
+
+  switcher.innerHTML = `
+    <span class="version-switcher__label">Version</span>
+    <button type="button" class="version-switcher__trigger" aria-haspopup="menu" aria-expanded="false">
+      <span class="version-switcher__name">${VERSION_LABELS[current]}</span>
+    </button>
+    <ul class="version-switcher__menu" role="menu" hidden>
+      ${itemsHtml}
+    </ul>
+  `
+
+  const trigger = switcher.querySelector('.version-switcher__trigger') as HTMLButtonElement
+  const menu = switcher.querySelector('.version-switcher__menu') as HTMLElement
+  const closeMenu = () => {
+    menu.hidden = true
+    trigger.setAttribute('aria-expanded', 'false')
+  }
+
+  trigger.addEventListener('click', (event) => {
+    event.stopPropagation()
+    menu.hidden = !menu.hidden
+    trigger.setAttribute('aria-expanded', String(!menu.hidden))
+  })
+
+  document.addEventListener('click', (event) => {
+    if (!switcher.contains(event.target as Node)) closeMenu()
+  })
+
+  switcher.querySelectorAll('.version-switcher__item').forEach((item) => {
+    item.addEventListener('click', (event) => {
+      event.preventDefault()
+      event.stopPropagation()
+      const targetVersion = (item as HTMLElement).dataset.version!
+
+      if (targetVersion !== current) {
+        const versionRootPattern = new RegExp(`/en/${current}(?:/.*)?$`)
+        const targetPath = location.pathname.replace(versionRootPattern, `/en/${targetVersion}/`)
+        window.location.replace(targetPath)
+      }
+
+      closeMenu()
+    })
+  })
+
+  navList.insertBefore(switcher, navList.firstChild)
+}
 
 function decodePath(path: string) {
   try {
@@ -995,6 +1071,7 @@ onMounted(() => {
   document.addEventListener('click', handleLightboxDocumentClick)
   document.addEventListener('keydown', handleLightboxDocumentKeydown)
   patchLogoLink()
+  injectVersionSwitcher()
   scheduleImageEnhancement()
   scheduleModuleEnhancement()
 })
@@ -1007,6 +1084,7 @@ watch(
     resetLazyImageRuntime(getDocRoot())
     await nextTick()
     patchLogoLink()
+    injectVersionSwitcher()
     scheduleImageEnhancement()
     scheduleModuleEnhancement()
   }
@@ -1033,4 +1111,5 @@ onBeforeUnmount(() => {
     :alt="lightboxAlt"
     @close="closeLightbox"
   />
+  <FeedbackWidget />
 </template>

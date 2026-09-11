@@ -3,6 +3,8 @@ node_modules/
 docs/.vitepress/dist/
 docs/.vitepress/cache/
 docs/.vitepress/.temp/
+docs/docs/
+docs/_static/
 *.log
 .DS_Store
 Thumbs.db

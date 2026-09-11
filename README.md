@@ -1,7 +1,12 @@
 # JetHexa Documentation
 
 This repository contains the JetHexa VitePress documentation site. The
-documentation source files are Markdown files under `docs/docs/`.
+versioned documentation sources are stored under `content/<version>/`.
+
+Available versions:
+
+- `latest`: JetHexa
+- `JetsonOrinNano`: Jetson Orin Nano
 
 ## Local development
 
@@ -12,14 +17,27 @@ npm ci
 npm run docs:dev
 ```
 
-Build the production site:
+Preview a specific version:
 
 ```bash
-npm run docs:build
-npm run docs:stage-main
+npm run dev:latest
+npm run dev:jetson-orin-nano
 ```
 
-The production files are staged in `projects/JetHexa/en/latest/`.
+Build and stage both production versions:
+
+```bash
+npm run build:all
+```
+
+Preview the version that was built most recently:
+
+```bash
+npm run preview:latest
+npm run preview:jetson-orin-nano
+```
+
+The production files are staged in `projects/JetHexa/en/<version>/`.
 
 ## GitHub Pages deployment
 
@@ -28,10 +46,12 @@ For the `JetHexa-vite` repository, configure GitHub Pages to deploy from the
 
 ```text
 https://Hiwonder-docs.github.io/JetHexa-vite/projects/JetHexa/en/latest/
+https://Hiwonder-docs.github.io/JetHexa-vite/projects/JetHexa/en/JetsonOrinNano/
 ```
 
 After the reverse proxy is configured, the public documentation URL is:
 
 ```text
 https://wiki.hiwonder.com/projects/JetHexa/en/latest/
+https://wiki.hiwonder.com/projects/JetHexa/en/JetsonOrinNano/
 ```

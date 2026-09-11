@@ -6,10 +6,17 @@ import sharp from 'sharp'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const repositoryRoot = join(__dirname, '..')
+const validVersions = ['latest', 'JetsonOrinNano']
+const version = process.env.DOCS_VERSION || process.argv[2] || 'latest'
 
-await rm(join(repositoryRoot, 'projects'), { recursive: true, force: true })
+if (!validVersions.includes(version)) {
+  console.error(`Invalid version: ${version}`)
+  console.error(`Valid versions: ${validVersions.join(', ')}`)
+  process.exit(1)
+}
 
-const targetDir = join(repositoryRoot, 'projects/JetHexa/en/latest')
+const targetDir = join(repositoryRoot, 'projects', 'JetHexa', 'en', version)
+await rm(targetDir, { recursive: true, force: true })
 await mkdir(targetDir, { recursive: true })
 
 await cp(
@@ -18,7 +25,7 @@ await cp(
   { recursive: true }
 )
 
-const sourceCodeDir = join(repositoryRoot, 'docs/_static/source_code')
+const sourceCodeDir = join(repositoryRoot, 'content', version, '_static', 'source_code')
 if (await pathExists(sourceCodeDir)) {
   await cp(
     sourceCodeDir,

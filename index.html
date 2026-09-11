@@ -1,11 +1,34 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="refresh" content="0;url=/projects/JetHexa/en/latest/docs/1_Basic_Lesson.html">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>JetHexa Documentation</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; padding: 24px; background: #f5f5f5; color: #333; }
+    main { width: min(100%, 600px); text-align: center; }
+    h1 { margin: 0 0 30px; font-size: 30px; }
+    .versions { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+    .version-card { display: block; padding: 28px 20px; border: 1px solid #e2e2e2; border-radius: 8px; background: #fff; color: #333; text-decoration: none; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s; }
+    .version-card:hover { border-color: #f29401; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.13); transform: translateY(-3px); }
+    .version-card h2 { margin: 0 0 8px; font-size: 20px; }
+    .version-card p { margin: 0; color: #777; font-size: 14px; }
+  </style>
 </head>
 <body>
-  <a href="/projects/JetHexa/en/latest/docs/1_Basic_Lesson.html">Click here if you are not redirected automatically.</a>
+  <main>
+    <h1>JetHexa Documentation</h1>
+    <div class="versions">
+      <a class="version-card" href="/projects/JetHexa/en/latest/">
+        <h2>JetHexa</h2>
+        <p>Original version</p>
+      </a>
+      <a class="version-card" href="/projects/JetHexa/en/JetsonOrinNano/">
+        <h2>Jetson Orin Nano</h2>
+        <p>Jetson Orin Nano documentation</p>
+      </a>
+    </div>
+  </main>
 </body>
 </html>
