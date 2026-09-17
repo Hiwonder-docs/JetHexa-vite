@@ -1,5 +1,5 @@
-const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/chunks/VPLocalSearchBox.DoSSiMdt.js","assets/chunks/framework.DC_ooBoR.js"])))=>i.map(i=>d[i]);
-import { d as defineComponent, c as createElementBlock, r as renderSlot, n as normalizeClass, o as openBlock, a as createTextVNode, t as toDisplayString, b as createBlock, w as withCtx, T as Transition, e as createCommentVNode, _ as _export_sfc, u as useData$1, i as isExternal, f as treatAsHtml, g as withBase, h as computed, j as createBaseVNode, k as unref, l as isActive, m as useMediaQuery, p as ref, q as watch, s as watchEffect, v as onMounted, x as onUnmounted, y as watchPostEffect, z as onUpdated, A as getScrollOffset, F as Fragment, B as renderList, C as resolveComponent, D as onContentUpdated, E as createVNode, G as shallowRef, H as resolveDynamicComponent, I as EXTERNAL_URL_RE, J as useRoute, K as mergeProps, L as inject, M as useWindowSize, N as normalizeStyle, O as onKeyStroke, P as nextTick, Q as useWindowScroll, R as inBrowser, S as readonly, U as defineAsyncComponent, V as __vitePreload, W as useScrollLock, X as provide, Y as toHandlers, Z as withKeys, $ as onBeforeUnmount, a0 as withModifiers, a1 as useSlots, a2 as Teleport, a3 as withDirectives, a4 as vModelText, a5 as reactive, a6 as h } from "./framework.DC_ooBoR.js";
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["assets/chunks/VPLocalSearchBox.CDvQ3YWn.js","assets/chunks/framework.D7-HceBJ.js"])))=>i.map(i=>d[i]);
+import { d as defineComponent, c as createElementBlock, r as renderSlot, n as normalizeClass, o as openBlock, a as createTextVNode, t as toDisplayString, b as createBlock, w as withCtx, T as Transition, e as createCommentVNode, _ as _export_sfc, u as useData$1, i as isExternal, f as treatAsHtml, g as withBase, h as computed, j as createBaseVNode, k as unref, l as isActive, m as useMediaQuery, p as ref, q as watch, s as watchEffect, v as onMounted, x as onUnmounted, y as watchPostEffect, z as onUpdated, A as getScrollOffset, F as Fragment, B as renderList, C as resolveComponent, D as onContentUpdated, E as createVNode, G as shallowRef, H as resolveDynamicComponent, I as EXTERNAL_URL_RE, J as useRoute, K as mergeProps, L as inject, M as useWindowSize, N as normalizeStyle, O as onKeyStroke, P as nextTick, Q as useWindowScroll, R as inBrowser, S as readonly, U as defineAsyncComponent, V as __vitePreload, W as useScrollLock, X as provide, Y as toHandlers, Z as withKeys, $ as onBeforeUnmount, a0 as withModifiers, a1 as useSlots, a2 as Teleport, a3 as withDirectives, a4 as vModelText, a5 as reactive, a6 as h } from "./framework.D7-HceBJ.js";
 const _sfc_main$$ = /* @__PURE__ */ defineComponent({
   __name: "VPBadge",
   props: {
@@ -2230,7 +2230,7 @@ const _hoisted_3$6 = {
 const _sfc_main$n = /* @__PURE__ */ defineComponent({
   __name: "VPNavBarSearch",
   setup(__props) {
-    const VPLocalSearchBox = defineAsyncComponent(() => __vitePreload(() => import("./VPLocalSearchBox.DoSSiMdt.js"), true ? __vite__mapDeps([0,1]) : void 0));
+    const VPLocalSearchBox = defineAsyncComponent(() => __vitePreload(() => import("./VPLocalSearchBox.CDvQ3YWn.js"), true ? __vite__mapDeps([0,1]) : void 0));
     const VPAlgoliaSearchBox = () => null;
     const { theme: theme2 } = useData();
     const loaded = ref(false);
@@ -3903,11 +3903,10 @@ const _sfc_main = /* @__PURE__ */ defineComponent({
   setup(__props) {
     const { frontmatter } = useData$1();
     const route = useRoute();
-    const ALL_VERSIONS = ["latest", "JetsonOrinNX", "JetsonNano", "RaspberryPi", "JetsonNanoRos1"];
+    const ALL_VERSIONS = ["latest", "JetsonOrinNX", "RaspberryPi", "JetsonNanoRos1"];
     const VERSION_LABELS = {
       latest: "Jetson Orin Nano",
       JetsonOrinNX: "Jetson Orin NX",
-      JetsonNano: "Jetson Nano",
       RaspberryPi: "Raspberry Pi",
       JetsonNanoRos1: "Jetson Nano-ROS1"
     };

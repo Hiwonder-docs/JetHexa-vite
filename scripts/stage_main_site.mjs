@@ -6,7 +6,7 @@ import sharp from 'sharp'
 
 const __dirname = dirname(fileURLToPath(import.meta.url))
 const repositoryRoot = join(__dirname, '..')
-const validVersions = ['latest', 'JetsonOrinNX', 'JetsonNano', 'RaspberryPi', 'JetsonNanoRos1']
+const validVersions = ['latest', 'JetsonOrinNX', 'RaspberryPi', 'JetsonNanoRos1']
 const version = process.env.DOCS_VERSION || process.argv[2] || 'JetsonNanoRos1'
 
 if (!validVersions.includes(version)) {

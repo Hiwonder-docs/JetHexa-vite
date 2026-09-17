@@ -7,7 +7,6 @@ Available versions:
 
 - `latest`: Jetson Orin Nano
 - `JetsonOrinNX`: Jetson Orin NX
-- `JetsonNano`: Jetson Nano
 - `RaspberryPi`: Raspberry Pi
 - `JetsonNanoRos1`: Jetson Nano-ROS1
 
@@ -25,12 +24,11 @@ Preview a specific version:
 ```bash
 npm run dev:jetson-orin-nano
 npm run dev:jetson-orin-nx
-npm run dev:jetson-nano
 npm run dev:raspberry-pi
 npm run dev:jetson-nano-ros1
 ```
 
-Build and stage both production versions:
+Build and stage all production versions:
 
 ```bash
 npm run build:all
@@ -41,7 +39,6 @@ Preview the version that was built most recently:
 ```bash
 npm run preview:jetson-orin-nano
 npm run preview:jetson-orin-nx
-npm run preview:jetson-nano
 npm run preview:raspberry-pi
 npm run preview:jetson-nano-ros1
 ```
@@ -56,7 +53,6 @@ For the `JetHexa-vite` repository, configure GitHub Pages to deploy from the
 ```text
 https://Hiwonder-docs.github.io/JetHexa-vite/projects/JetHexa/en/latest/
 https://Hiwonder-docs.github.io/JetHexa-vite/projects/JetHexa/en/JetsonOrinNX/
-https://Hiwonder-docs.github.io/JetHexa-vite/projects/JetHexa/en/JetsonNano/
 https://Hiwonder-docs.github.io/JetHexa-vite/projects/JetHexa/en/RaspberryPi/
 https://Hiwonder-docs.github.io/JetHexa-vite/projects/JetHexa/en/JetsonNanoRos1/
 ```
@@ -66,7 +62,6 @@ After the reverse proxy is configured, the public documentation URL is:
 ```text
 https://wiki.hiwonder.com/projects/JetHexa/en/latest/
 https://wiki.hiwonder.com/projects/JetHexa/en/JetsonOrinNX/
-https://wiki.hiwonder.com/projects/JetHexa/en/JetsonNano/
 https://wiki.hiwonder.com/projects/JetHexa/en/RaspberryPi/
 https://wiki.hiwonder.com/projects/JetHexa/en/JetsonNanoRos1/
 ```
